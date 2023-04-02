@@ -1,0 +1,6 @@
+{
+    "env": {
+      "API_ROUTE_TIMEOUT": "30s"
+    }
+  }
+  

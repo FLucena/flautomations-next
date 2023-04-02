@@ -8,11 +8,11 @@ import {
     Twitter,
   } from '@mui/icons-material';
   import styled from "styled-components";
-  import { mobile } from "../pages/responsive";
+  import Mobile from "../pages/responsive";
   
   const Container = styled.div`
     display: flex;
-    ${mobile({ flexDirection: "column" })}
+    ${Mobile({ flexDirection: "column" })}
   `;
   
   const Left = styled.div`
@@ -47,7 +47,7 @@ import {
   const Center = styled.div`
     flex: 1;
     padding: 20px;
-    ${mobile({ display: "none" })}
+    ${Mobile({ display: "none" })}
   `;
   
   const Title = styled.h3`
@@ -70,7 +70,7 @@ import {
   const Right = styled.div`
     flex: 1;
     padding: 20px;
-    ${mobile({ backgroundColor: "#fff8f8" })}
+    ${Mobile({ backgroundColor: "#fff8f8" })}
   
   `;
   
