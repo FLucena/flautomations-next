@@ -27,31 +27,34 @@ export async function getServerSideProps({ query }) {
   );
 
   const sheets = google.sheets({ version: 'v4', auth: client });
+  try {
+    // Call API
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range,
+    });
 
-  // Call API
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.SHEET_ID,
-    range,
-  });
+    // Check if response.data.values exists and is not empty
+    if (response.data.values && response.data.values.length > 0) {
+      const [title, content, video, image, defaultImg] = response.data.values[0];
+      console.log(response);
 
-  // Check if response.data.values exists and is not empty
-  if (response.data.values && response.data.values.length > 0) {
-    const [title, content, video, image, defaultImg] = response.data.values[0];
-    console.log(response);
+      // Store response in cache
+      const props = {
+        title,
+        content,
+        video,
+        image,
+        defaultImg,
+      };
+      cache.set(range, props);
 
-    // Store response in cache
-    const props = {
-      title,
-      content,
-      video,
-      image,
-      defaultImg,
-    };
-    cache.set(range, props);
-
-    return { props };
-  } else {
-    return { notFound: true };
+      return { props };
+    } else {
+      return { notFound: true };
+    }
+  } catch (e) {
+    response.status(500).json({message: e.message})
   }
 }
 
