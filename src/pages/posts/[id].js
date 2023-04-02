@@ -1,6 +1,5 @@
 import { google } from 'googleapis';
 import NavBar from '../../components/Navbar';
-import keys from '../../../secrets';
 import styles from './[id].module.css';
 
 export async function getServerSideProps({ query }) {
