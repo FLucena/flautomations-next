@@ -6,9 +6,9 @@ import styles from './[id].module.css';
 export async function getServerSideProps({ query }) {
   // Auth
   const client = new google.auth.JWT(
-    keys.client_email,
+    process.env.client_email,
     null,
-    keys.private_key,
+    process.env.private_key,
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
