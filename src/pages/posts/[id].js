@@ -2,6 +2,7 @@ import { google } from 'googleapis';
 import NavBar from '../../components/Navbar';
 import keys from '../../../secrets';
 import styles from './[id].module.css';
+import Image from 'next/image';
 
 export async function getServerSideProps({ query }) {
   // Auth
@@ -51,11 +52,11 @@ export default function Post({ title, content, video, image, defaultImg }) {
                 <h1 className={styles.title}>{title}</h1>
                 {image ? (
                     <div className={styles.imgWrapper}>
-                        <img src={image}/>
+                        <Image src={image} alt="post image" />
                     </div>
                 ) : (
                     <div className={styles.imgWrapper}>
-                        <img src={defaultImg}/>
+                        <Image src={defaultImg} alt="no image"/>
                         <p className={styles.message}>No image available</p>
                     </div>
                 )}

@@ -122,7 +122,7 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" alt="jean image" />
         </ImgContainer>
         <InfoContainer>
           <Title>Denim Jumpsuit</Title>

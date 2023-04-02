@@ -66,7 +66,7 @@ import styled from 'styled-components'
     return (
       <Container>
         <Circle />
-        <Image src={item.img} />
+        <Image src={item.img} alt="product image" />
         <Info>
           <Icon>
             <ShoppingCartOutlined />
