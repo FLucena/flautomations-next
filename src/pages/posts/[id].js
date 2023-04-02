@@ -55,6 +55,7 @@ export async function getServerSideProps({ query }) {
     }
   } catch (e) {
     response.status(500).json({message: e.message})
+    response.status(504).json({message: e.message})
   }
 }
 
