@@ -18,9 +18,9 @@ export async function getServerSideProps({ query }) {
 
   // Auth
   const client = new google.auth.JWT(
-    process.env.client_email,
+    process.env.CLIENT_EMAIL,
     null,
-    process.env.private_key.split(String.raw`\n`).join('\n'),
+    process.env.PRIVATE_KEY.split(String.raw`\n`).join('\n'),
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
