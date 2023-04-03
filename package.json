@@ -21,6 +21,7 @@
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.2.4",
     "@types/node": "^18.15.11",
     "babel-eslint": "^10.1.0",
     "eslint-config-next": "^13.2.4",

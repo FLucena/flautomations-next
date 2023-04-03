@@ -37,7 +37,6 @@ export async function getServerSideProps({ query }) {
     // Check if response.data.values exists and is not empty
     if (response.data.values && response.data.values.length > 0) {
       const [title, content, video, image, defaultImg] = response.data.values[0];
-      console.log(response);
 
       // Store response in cache
       const props = {
@@ -54,7 +53,6 @@ export async function getServerSideProps({ query }) {
       return { notFound: true };
     }
   } catch (e) {
-    console.log(e);
     response.status(504).json({message: e.message})
   }
 }
