@@ -10,6 +10,13 @@ export async function getServerSideProps({ }) {
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
+  client.authorize(function (err, tokens) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+  });
+
   const sheets = google.sheets({ version: 'v4', auth: client });
   // Call API
   const response = await sheets.spreadsheets.values.get({
