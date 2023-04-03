@@ -57,26 +57,26 @@ export async function getServerSideProps({ query }) {
   }
 }
 
-export default function Post({ title, content, video, image, defaultImg }) {
+export default function Post(props) {
   return (
     <>
       <NavBar />
       <div className={styles.post}>
-        <h1 className={styles.title}>{title}</h1>
-        {image ? (
+        <h1 className={styles.title}>{ props.title }</h1>
+        {props.image ? (
           <div className={styles.imgWrapper}>
-            <img src={image} alt="post image" />
+            <img src={props.image} alt="post image" />
           </div>
         ) : (
           <div className={styles.imgWrapper}>
-            <img src={defaultImg} alt="no image" />
+            <img src={props.defaultImg} alt="no image" />
             <p className={styles.message}>No image available</p>
           </div>
         )}
-        <div className={styles.content}>{content}</div>
-        {video ? (
+        <div className={styles.content}>{props.content}</div>
+        {props.video ? (
           <div className={styles.videoWrapper}>
-            <iframe className={styles.video} src={video} allow="autoplay" />
+            <iframe className={styles.video} src={props.video} allow="autoplay" />
           </div>
         ) : (
           <p className={styles.message}>No video available</p>
