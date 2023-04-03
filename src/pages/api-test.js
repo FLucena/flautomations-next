@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import LRUCache from 'lru-cache';
+import { Buffer } from 'buffer';
 
 const cache = new LRUCache({
   max: 100, // maximum number of items to store in cache
@@ -16,15 +17,23 @@ export async function getServerSideProps({ query }) {
     return { props: cachedResponse };
   }
 
+  const credentials = `${process.env.CLIENT_EMAIL}:${Buffer.from(
+    process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
+    'base64'
+  ).toString()}`;
+  const encodedCredentials = Buffer.from(credentials).toString('base64');
+
   // Auth
   const client = new google.auth.JWT(
     process.env.CLIENT_EMAIL,
     null,
-    process.env.PRIVATE_KEY.replace(/\n/g, '\n'),
+    process.env.PRIVATE_KEY,
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
+
   const sheets = google.sheets({ version: 'v4', auth: client });
+  console.log(sheets);
   // Call API
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SHEET_ID,
@@ -51,13 +60,11 @@ export async function getServerSideProps({ query }) {
 }
 
 function ApiTest(props) {
-    return (
-      <div>
-        { props.image }
-      </div>
-    )
-  }
-  
-  
-  export default ApiTest
-  
+  return (
+    <div>
+      {props.image}
+    </div>
+  );
+}
+
+export default ApiTest;
