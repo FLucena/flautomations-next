@@ -6,7 +6,7 @@ export async function getServerSideProps({ }) {
   const client = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    process.env.GOOGLE_PRIVATE_KEY,
+    process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join('\n'),
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
