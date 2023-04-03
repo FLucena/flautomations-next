@@ -1,24 +1,14 @@
 import { google } from 'googleapis';
-import { Buffer } from 'buffer';
 
-
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ }) {
   const range = `Sheet1!A2:E2`;
 
-  const credentials = `${process.env.CLIENT_EMAIL}:${Buffer.from(
-    process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
-    'base64'
-  ).toString()}`;
-  const encodedCredentials = Buffer.from(credentials).toString('base64');
-
-  // Auth
   const client = new google.auth.JWT(
-    process.env.CLIENT_EMAIL,
+    process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    process.env.PRIVATE_KEY,
+    process.env.GOOGLE_PRIVATE_KEY,
     ['https://www.googleapis.com/auth/spreadsheets']
   );
-
 
   const sheets = google.sheets({ version: 'v4', auth: client });
   // Call API
