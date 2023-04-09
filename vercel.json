@@ -1,9 +1,6 @@
 {
     "env": {
-      "API_ROUTE_TIMEOUT": "30s",
-      "SHEET_ID": "@sheet_id",
-      "GOOGLE_CLIENT_EMAIL": "@GOOGLE_CLIENT_EMAIL",
-      "GOOGLE_PRIVATE_KEY": "@google-private-key"
+      "API_ROUTE_TIMEOUT": "30s"
     }
   }
   
