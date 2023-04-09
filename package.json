@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
+    "crypto-xxhash-64": "^2.0.0",
     "eslint": "8.37.0",
     "google-spreadsheet": "^3.3.0",
     "googleapis": "^114.0.0",
@@ -19,7 +20,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "xxhash": "^0.3.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.2.4",

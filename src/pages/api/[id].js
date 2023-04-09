@@ -1,4 +1,5 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
+const { Buffer } = require('buffer');
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
 export default async function handler(req, res) {
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
     res.status(405).end(); // Method Not Allowed
     return;
   }
-
+  
   try {
     await doc.useServiceAccountAuth({
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
