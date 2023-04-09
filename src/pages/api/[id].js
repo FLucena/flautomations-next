@@ -1,5 +1,7 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-const { Buffer } = require('buffer');
+import { renderToString } from 'react-dom/server';
+import Post from '../../components/Post';
+
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
 export default async function handler(req, res) {
@@ -24,7 +26,8 @@ export default async function handler(req, res) {
       const cell = sheet.getCell(id - 1, col);
       rowValues.push(cell.value);
     }
-    res.status(200).send(rowValues);
+    const postHtml = renderToString(<Post {...rowValues} />);
+    res.status(200).send(postHtml);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
