@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import NavBar from '../../components/Navbar';
+import NavBar from '../../../components/Navbar';
 import styles from './[id].module.css';
 import LRUCache from 'lru-cache';
 
@@ -18,11 +18,19 @@ export async function getServerSideProps({ query }) {
     return { props: cachedResponse };
   }
 
+  const b64_publicKey = Buffer.from(process.env.GOOGLE_PRIVATE_KEY).toString('base64');
+  const pemKey = `
+  -----BEGIN PUBLIC KEY-----
+  ${b64_publicKey}
+  -----END PUBLIC KEY-----
+  `;
+  
+
   // Auth
   const client = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    process.env.GOOGLE_PRIVATE_KEY,
+    pemKey,
     ['https://www.googleapis.com/auth/spreadsheets']
   );
 
