@@ -1,5 +1,4 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
 export default async function handler(req, res) {
