@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import NavBar from '../../../components/Navbar';
-import styles from './[id].module.css';
+import styles from '../../../components/Post.module.css';
 import LRUCache from 'lru-cache';
 
 const cache = new LRUCache({

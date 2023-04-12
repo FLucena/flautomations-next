@@ -1,63 +1,20 @@
 import { Send } from '@mui/icons-material';
-import styled from "styled-components";
-import Mobile from "../pages/responsive";
-
-const Container = styled.div`
-  height: 60vh;
-  background-color: #fcf5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-const Title = styled.h1`
-  font-size: 70px;
-  margin-bottom: 20px;
-`;
-
-const Desc = styled.div`
-  font-size: 24px;
-  font-weight: 300;
-  margin-bottom: 20px;
-  ${Mobile({ textAlign: "center" })}
-
-`;
-
-const InputContainer = styled.div`
-  width: 50%;
-  height: 40px;
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid lightgray;
-  ${Mobile({ width: "80%" })}
-`;
-
-const Input = styled.input`
-  border: none;
-  flex: 8;
-  padding-left: 20px;
-`;
-
-const Button = styled.button`
-  flex: 1;
-  border: none;
-  background-color: teal;
-  color: white;
-`;
+import styles from "./Newsletter.module.css";
 
 const Newsletter = () => {
   return (
-    <Container>
-      <Title>Newsletter</Title>
-      <Desc>Mantente al tanto de las nuevas soluciones!</Desc>
-      <InputContainer>
-        <Input placeholder="Tu email" />
-        <Button>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Newsletter</h1>
+      <div className={styles.desc}>
+        Mantente al tanto de las nuevas soluciones!
+      </div>
+      <div className={styles.inputContainer}>
+        <input className={styles.input} placeholder="Tu email" />
+        <button className={styles.button}>
           <Send />
-        </Button>
-      </InputContainer>
-    </Container>
+        </button>
+      </div>
+    </div>
   );
 };
 

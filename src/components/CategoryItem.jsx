@@ -1,53 +1,17 @@
-import styled from "styled-components"
+import styles from './CategoryItem.module.css';
+import Image from 'next/image';
 
-const Container = styled.div`
-  flex: 1;
-  margin: 3px;
-  height: 70vh;
-  position: relative;
-  background: linear-gradient(to bottom, transparent, transparent 50%, #000000 50%, #000000);
-  display: inline-block;
-`
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
-const Info = styled.div`
-  position:absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-const Title = styled.h1`
-  color: black;
-  margin-bottom: 20px;
-  font-weight: bold;
-`
-const Button = styled.button`
-  border: none;
-  padding: 10px;
-  background-color: white;
-  color: gray;
-  cursor: pointer;
-  font-weight: 600;
-`
 
 const CategoryItem = ({item}) => {
   return (
-    <Container>
-      <Image src={item.img} alt="item image"  />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>LEER MAS</Button>
+    <div className={styles.container}>
+      <Image className={styles.image} src={item.img} alt="item image" width={500} height={500} />
+      <div className={styles.info}>
+      <h1 className={styles.title}>{item.title}</h1>
+      <button className={styles.button}>LEER MAS</button>
+  </div>
+</div>
 
-      </Info>
-    </Container>
   )
 }
 

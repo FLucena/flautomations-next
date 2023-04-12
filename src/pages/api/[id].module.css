@@ -10,13 +10,12 @@
     justify-content: center;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    background-color: #d9f6e3;
+    background-color: black;
 }
-  
 
 /* Title */
-.post h1 {
-    font-size: 36px;
+.postTitle {
+    font-size: 126px;
     margin-bottom: 20px;
 }
 
