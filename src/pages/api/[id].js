@@ -24,9 +24,10 @@ export default async function handler(req, res) {
     const rowValues = [];
     for (let col = 0; col < 4; col++) { // loop through columns A to D
       const cell = sheet.getCell(id - 1, col);
-      rowValues.push(cell.value);
+      rowValues.push(encodeURIComponent(cell.value));
     }
     const postHtml = renderToString(<Post {...rowValues} />);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(200).send(postHtml);
   } catch (error) {
     console.error(error);
