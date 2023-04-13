@@ -54,7 +54,7 @@ const Footer = () => {
         <div className={styles.contactItem}>
           <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev
         </div>
-        <Image className={styles.payment} src="https://i.ibb.co/Qfvn4z6/payment.png" alt="Payment" width={500} height={500} />
+        <Image className={styles.payment} src="https://i.ibb.co/Qfvn4z6/payment.png" alt="Payment" width={232} height={25} />
       </div>
     </div>
   );

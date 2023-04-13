@@ -26,7 +26,8 @@ module.exports = {
   images: {
     domains: [
       'drive.google.com',
-      'i.ibb.co'
+      'i.ibb.co',
+      'lh3.googleusercontent.com'
     ],
   },
 };
