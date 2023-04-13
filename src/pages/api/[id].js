@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       cell.value == null ? val=  cell.value = "" : val = cell.value
       rowValues.push(encodeURIComponent(val));
     }
-    const postHtml = renderToString(<Post {...rowValues} imageSRC={rowValues[3]} postClassName={styles.post} titleClassName={styles.postTitle} imgWrapperClassName={styles.imgWrapper} messageClassName={styles.message} />);
+    const postHtml = renderToString(<Post {...rowValues} id={id} imageSRC={rowValues[3]} postClassName={styles.post} titleClassName={styles.postTitle} imgWrapperClassName={styles.imgWrapper} messageClassName={styles.message} />);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(200).send(postHtml);
   } catch (error) {
