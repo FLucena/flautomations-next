@@ -1,6 +1,7 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { renderToString } from 'react-dom/server';
 import Post from '../../../components/Post';
+import React from 'react';
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
@@ -11,7 +12,7 @@ export default async function handler(req, res) {
     res.status(405).end();
     return;
   }
-  
+
   try {
     await doc.useServiceAccountAuth({
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -25,10 +26,16 @@ export default async function handler(req, res) {
     let val = "";
     for (let col = 0; col < 6; col++) {
       const cell = sheet.getCell(id - 1, col);
-      cell.value == null ? val=  cell.value = "" : val = cell.value
+      cell.value == null ? (val = cell.value = "") : (val = cell.value);
       rowValues.push(encodeURIComponent(val));
     }
-    const postHtml = renderToString(<Post {...rowValues} id={id} imageSRC={rowValues[3]} />);
+
+    const postHtml = renderToString(
+      <>
+        <Post {...rowValues} id={id} imageSRC={rowValues[3]} pageCount={1000} />
+      </>,
+    );
+
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(200).send(postHtml);
   } catch (error) {

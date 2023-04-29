@@ -1,5 +1,8 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from 'next/link'; 
+import { useState } from 'react';
+import CustomPagination from "./CustomPagination";
+
 
 const styles = {
   wrapper: {
@@ -29,14 +32,10 @@ const styles = {
 };
 
 export default function Post(props) {
+  const { id, title, content, videoUrl, imageUrl, defaultImageUrl, pageCount, onChange } = props;
   const keys = Object.keys(props);
   const values = keys.map((key) => decodeURIComponent(props[key]));
   const encodedValues = values.map((val) => encodeURI(val));
-  const { id } = props;
-  const nextPageId = parseInt(id) + 1;
-  const nextPageUrl = `/api/posts/${nextPageId}`;
-  const previousPageId = parseInt(id) - 1;
-  const previousPageUrl = `/api/posts/${previousPageId}`;
 
   return (
     <div style={styles.wrapper}>
@@ -44,45 +43,24 @@ export default function Post(props) {
       <p>{decodeURI(encodedValues[1])}</p>
       {encodedValues[3] !== '' ? (
         <div style={styles.imageWrapper}>
-          <Image
-            src={decodeURI(encodedValues[3])}
-            alt="Post image"
-            width={500}
-            height={500}
-          />
+          <Image src={decodeURI(encodedValues[3])} alt="Post image" width={500} height={500} />
         </div>
       ) : (
         <div style={styles.imageWrapper}>
-          <Image
-            src={decodeURI(encodedValues[4])}
-            alt="No image"
-            width={500}
-            height={500}
-          />
+          <Image src={decodeURI(encodedValues[4])} alt="No image" width={500} height={500} />
           <p style={styles.imageWrapperP}>No image available</p>
         </div>
       )}
       <br />
       {encodedValues[2] !== '' ? (
         <div>
-          <iframe
-            style={styles.videoWrapper}
-            src={encodedValues[2]}
-            allow="autoplay"
-          />
+          <iframe style={styles.videoWrapper} src={encodedValues[2]} allow="autoplay" />
         </div>
       ) : (
         <p style={styles.message}>No video available</p>
       )}
-      <br />
       <div>
-        {previousPageId !== 0 ? (
-          <>
-            <Link href={previousPageUrl}>Previous page</Link>
-          </>
-        ) : null}
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <Link href={nextPageUrl}>Next page</Link>
+        <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
       </div>
     </div>
   );
