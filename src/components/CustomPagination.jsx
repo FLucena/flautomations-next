@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import Link from 'next/link';
+import styles from './CustomPagination.module.css';
 
 export default function CustomPagination(props) {
   const { currentPage, pageCount } = props;
@@ -10,19 +11,22 @@ export default function CustomPagination(props) {
     const isCurrentPage = item.page === currentPage;
     const pageLink = `/api/posts/${item.page}`;
     return (
-      <Link key={item.page} href={pageLink} legacyBehavior>
-        <a style={{ textDecoration: 'none' }}>
-          <PaginationItem 
-            {...item} 
-            component="span"
-            selected={isCurrentPage}         
-          />
-        </a>
-      </Link>
+      <div className={styles.container}>
+        <Link key={item.page} href={pageLink} legacyBehavior>
+          <a style={{ textDecoration: 'none' }}>
+            <PaginationItem 
+              {...item} 
+              component="span"
+              selected={isCurrentPage}         
+            />
+          </a>
+        </Link>
+      </div>
     );
   };
 
   return (
+    <div className={styles.container}>
       <Stack spacing={2} alignItems="center">
         <Pagination
           count={pageCount}
@@ -31,5 +35,6 @@ export default function CustomPagination(props) {
           renderItem={renderPaginationItem}
         />
       </Stack>
+    </div>
   );
 }

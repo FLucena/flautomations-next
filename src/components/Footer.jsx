@@ -2,7 +2,6 @@ import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } fro
 import styles from "./Footer.module.css";
 import Image from 'next/image';
 
-
 const Footer = () => {
   return (
     <div className={styles.container}>

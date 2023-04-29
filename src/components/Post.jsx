@@ -1,8 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link'; 
-import { useState } from 'react';
 import CustomPagination from "./CustomPagination";
-
 
 const styles = {
   wrapper: {
@@ -21,13 +18,16 @@ const styles = {
     padding: '10px',
   },
   videoWrapper: {
-    width: '100%',
-    height: '400px',
+    width: '800vh',
     border: 'none',
+    marginBottom: '20px',
   },
   message: {
     color: 'red',
     fontWeight: 'bold',
+  },
+  paginationWrapper: {
+    margin: '20px',
   },
 };
 
@@ -54,12 +54,12 @@ export default function Post(props) {
       <br />
       {encodedValues[2] !== '' ? (
         <div>
-          <iframe style={styles.videoWrapper} src={encodedValues[2]} allow="autoplay" />
+          <iframe style={{ ...styles.videoWrapper, marginBottom: '20px' }} src={encodedValues[2]} allow="autoplay" />
         </div>
       ) : (
         <p style={styles.message}>No video available</p>
       )}
-      <div>
+      <div style={styles.paginationWrapper}>
         <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
       </div>
     </div>
