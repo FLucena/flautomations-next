@@ -1,15 +1,13 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { renderToString } from 'react-dom/server';
 import Post from '../../../components/Post';
-import Footer from '../../../components/Footer';
-import NavBar from '../../../components/Navbar';
 import React from 'react';
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
 export default async function handler(req, res) {
   const { id } = req.query;
-  const range = `A${id}:F${id}`;
+  const range = `A${id}:I${id}`;
   if (req.method !== 'GET') {
     res.status(405).end();
     return;
@@ -26,7 +24,7 @@ export default async function handler(req, res) {
     await sheet.loadCells(range);
     const rowValues = [];
     let val = "";
-    for (let col = 0; col < 6; col++) {
+    for (let col = 0; col < 9; col++) {
       const cell = sheet.getCell(id - 1, col);
       cell.value == null ? (val = cell.value = "") : (val = cell.value);
       rowValues.push(encodeURIComponent(val));

@@ -24,6 +24,7 @@ module.exports = {
   },
 
   images: {
+    disableStaticImages: true,  
     domains: [
       'drive.google.com',
       'i.ibb.co',

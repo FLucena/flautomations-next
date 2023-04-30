@@ -1,6 +1,6 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from '@mui/icons-material';
 import styles from "./Footer.module.css";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const Footer = () => {
   return (

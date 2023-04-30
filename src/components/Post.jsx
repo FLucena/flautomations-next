@@ -1,15 +1,16 @@
-import Image from 'next/image';
+import Image from "next/image";
+import AuthorCard from './AuthorCard';
 import CustomPagination from "./CustomPagination";
 
 const styles = {
   wrapper: {
+    display: 'flex',
+    flexDirection: 'column', // add this line to stack flex items vertically
+    justifyContent: 'space-between',
     margin: '20px',
     padding: '20px',
     border: '1px solid #ccc',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxWidth: '1000px', // Set the maximum width of the wrapper
+    maxWidth: '1000px',
   },
   imageWrapper: {
     display: 'flex',
@@ -40,36 +41,42 @@ const styles = {
 };
 
 export default function Post(props) {
-  const { id, title, content, videoUrl, imageUrl, defaultImageUrl, pageCount, onChange } = props;
+  const { id, pageCount } = props;
   const keys = Object.keys(props);
   const values = keys.map((key) => decodeURIComponent(props[key]));
   const encodedValues = values.map((val) => encodeURI(val));
 
   return (
-    <div style={styles.wrapper}>
-      <h1>{decodeURI(encodedValues[0])}</h1>
-      <p>{decodeURI(encodedValues[1])}</p>
-      {encodedValues[3] !== '' ? (
-        <div style={styles.imageWrapper}>
-          <Image src={decodeURI(encodedValues[3])} alt="Post image" width={500} height={500} />
-        </div>
-      ) : (
-        <div style={styles.imageWrapper}>
-          <Image src={decodeURI(encodedValues[4])} alt="No image" width={500} height={500} />
-          <p style={styles.imageWrapperP}>No image available</p>
-        </div>
-      )}
-      <br />
-      <div style={styles.videoWrapper}>
-        {encodedValues[2] !== '' ? (
-          <iframe src={encodedValues[2]} allow="autoplay" width="800" height="450" />
+    <>
+      <div style={styles.wrapper}>
+        <h1>{decodeURI(encodedValues[0])}</h1>
+        <p>{decodeURI(encodedValues[1])}</p>
+        {encodedValues[3] !== '' ? (
+          <div style={styles.imageWrapper}>
+            <Image src={decodeURI(encodedValues[3])} alt="Post image" width={500} height={500} />
+          </div>
         ) : (
-          <p style={styles.message}>No video available</p>
+          <div style={styles.imageWrapper}>
+            <Image src={decodeURI(encodedValues[4])} alt="No image" width={500} height={500} />
+            <p style={styles.imageWrapperP}>No image available</p>
+          </div>
         )}
+        <br />
+        <div style={styles.videoWrapper}>
+          {encodedValues[2] !== '' ? (
+            <iframe src={encodedValues[2]} allow="autoplay" width="800" height="450" />
+          ) : (
+            <p style={styles.message}>No video available</p>
+          )}
+        </div>
+        <div style={styles.paginationWrapper}>
+          <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
+          
+        </div>
+        <div>
+          <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} />
+        </div>
       </div>
-      <div style={styles.paginationWrapper}>
-        <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
-      </div>
-    </div>
+    </>
   );
 }

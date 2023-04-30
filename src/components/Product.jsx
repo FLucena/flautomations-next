@@ -1,5 +1,5 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import styles from './Product.module.css';
 
 const Product = ({ item }) => {

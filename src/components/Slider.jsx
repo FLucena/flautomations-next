@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import styles from './Slider.module.css';
 import { SliderItems } from './data';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 
 const Slider = () => {

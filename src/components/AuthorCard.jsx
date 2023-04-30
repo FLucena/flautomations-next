@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export default function AuthorCard(props) {
   const { authorName, authorImg } = props;
@@ -38,7 +38,7 @@ export default function AuthorCard(props) {
   return (
     <div style={styles.authorCard}>
       <div style={styles.avatar}>
-        <Image src={authorImg} alt="Author Avatar" width={120} height={120} objectFit="cover" />
+        <Image src="" alt="Author Avatar" layout="fill" objectFit="cover" />
       </div>
       <div style={styles.details}>
         <div style={styles.name}>

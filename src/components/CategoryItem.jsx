@@ -1,5 +1,5 @@
 import styles from './CategoryItem.module.css';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 
 const CategoryItem = ({item}) => {
