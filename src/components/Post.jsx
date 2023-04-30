@@ -9,6 +9,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    maxWidth: '1000px', // Set the maximum width of the wrapper
   },
   imageWrapper: {
     display: 'flex',
@@ -24,8 +25,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '150vh',
-    height: '100vh',
+    width: '100%', // Set the width of the video container to be 100% of its parent container
+    maxWidth: '100%', // Set the maximum width of the video container to be 100% of its parent container
     border: 'none',
     marginBottom: '20px',
   },
@@ -59,13 +60,13 @@ export default function Post(props) {
         </div>
       )}
       <br />
-      {encodedValues[2] !== '' ? (
-        <div>
-          <iframe style={{ ...styles.videoWrapper, marginBottom: '20px' }} src={encodedValues[2]} allow="autoplay" />
-        </div>
-      ) : (
-        <p style={styles.message}>No video available</p>
-      )}
+      <div style={styles.videoWrapper}>
+        {encodedValues[2] !== '' ? (
+          <iframe src={encodedValues[2]} allow="autoplay" width="800" height="450" />
+        ) : (
+          <p style={styles.message}>No video available</p>
+        )}
+      </div>
       <div style={styles.paginationWrapper}>
         <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
       </div>
