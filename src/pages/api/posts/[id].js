@@ -36,7 +36,6 @@ export default async function handler(req, res) {
       <>
         <NavBar />
         <Post {...rowValues} id={id} imageSRC={rowValues[3]} pageCount={1000} />
-        <Footer />
       </>,
     );
 
