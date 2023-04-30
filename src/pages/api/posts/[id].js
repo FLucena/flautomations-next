@@ -2,7 +2,6 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { renderToString } from 'react-dom/server';
 import Post from '../../../components/Post';
 import React from 'react';
-import Footer from 'src/components/Footer';
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
