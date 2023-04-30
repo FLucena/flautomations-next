@@ -6,6 +6,9 @@ const styles = {
     margin: '20px',
     padding: '20px',
     border: '1px solid #ccc',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   imageWrapper: {
     display: 'flex',
@@ -18,7 +21,11 @@ const styles = {
     padding: '10px',
   },
   videoWrapper: {
-    width: '800vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '150vh',
+    height: '100vh',
     border: 'none',
     marginBottom: '20px',
   },
