@@ -1,6 +1,3 @@
-import { Search, ShoppingCartOutlined } from '@mui/icons-material';
-import { Badge } from '@mui/material';
-
 const styles = {
   container: {
     height: '60px',
@@ -60,7 +57,6 @@ const Navbar = () => {
           <span style={styles.language}>EN</span>
           <div style={styles.searchContainer}>
             <input style={styles.input} />
-            <Search style={{ color: 'gray', fontSize: 16 }} />
           </div>
         </div>
         <div style={styles.center}>
@@ -70,8 +66,6 @@ const Navbar = () => {
           <div style={styles.menuItem}><p>REGISTER</p></div>
           <div style={styles.menuItem}><a href={"/login"}>SIGN IN</a></div>
           <div style={styles.menuItem}>
-            <Badge badgeContent={5} color="primary" style={{ transform: 'translate(20px, -20px)' }} />
-            <ShoppingCartOutlined />
           </div>
         </div>
       </div>
