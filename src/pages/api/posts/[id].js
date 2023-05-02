@@ -2,6 +2,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { renderToString } from 'react-dom/server';
 import Post from '../../../components/Post';
 import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
@@ -34,6 +35,7 @@ export default async function handler(req, res) {
       <>
         <Navbar />
         <Post {...rowValues} id={id} imageSRC={rowValues[3]} pageCount={1000} />
+        <Footer />
       </>,
     );
 
