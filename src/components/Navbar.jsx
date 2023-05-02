@@ -3,7 +3,7 @@ import { Badge } from '@mui/material'
 import React from 'react'
 import styles from './Navbar.module.css';
 
-const NavBar = () => {
+const Navbar = () => {
     return (
       <div className={styles.Container}>
         <div className={styles.Wrapper}>
@@ -30,4 +30,4 @@ const NavBar = () => {
     )
   }
 
-export default NavBar   
+export default Navbar; 

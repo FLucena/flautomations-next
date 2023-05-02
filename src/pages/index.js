@@ -1,5 +1,5 @@
 import Announcement from "../components/Announcement";
-import NavBar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
 import Categories from "../components/Categories";
 import Products from "../components/Products";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
         <Announcement />
-        <NavBar/>
+        <Navbar/>
         <Slider />
         <Categories />
         <Products />

@@ -38,7 +38,7 @@ export default function AuthorCard(props) {
   return (
     <div style={styles.authorCard}>
       <div style={styles.avatar}>
-        <Image src={authorImg} alt="Author Avatar" width={120} height={120} objectFit="cover" />
+        <Image src={authorImg} alt="Author Avatar" width={120} height={120} />
       </div>
       <div style={styles.details}>
         <div style={styles.name}>
