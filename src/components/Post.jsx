@@ -8,8 +8,12 @@ const styles = {
     flexDirection: 'column', // add this line to stack flex items vertically
     justifyContent: 'space-between',
     margin: '20px',
-    padding: '20px',
-    border: '1px solid #ccc',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '2rem',
+    borderRadius: '12px',
+    backgroundColor: '#fff',
+    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     maxWidth: '1000px',
   },
   imageWrapper: {
