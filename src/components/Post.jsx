@@ -71,11 +71,11 @@ export default function Post(props) {
             <p style={styles.message}>No video available</p>
           )}
         </div>
-        <div style={styles.paginationWrapper}>
-          <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
-        </div>
         <div>
           <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} />
+        </div>
+        <div style={styles.paginationWrapper}>
+          <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
         </div>
       </div>
     </>

@@ -63,7 +63,7 @@ const Navbar = () => {
           <h1 style={styles.logo}>FL Automations</h1>
         </div>
         <div style={styles.right}>
-          <div style={styles.menuItem}><p>REGISTER</p></div>
+        <div style={styles.menuItem}><a href={"/register"}>REGISTER</a></div>
           <div style={styles.menuItem}><a href={"/login"}>SIGN IN</a></div>
           <div style={styles.menuItem}>
           </div>
