@@ -66,14 +66,13 @@ export default function Post(props) {
         <br />
         <div style={styles.videoWrapper}>
           {encodedValues[2] !== '' ? (
-            <iframe src={encodedValues[2]} allow="autoplay" width="800" height="450" />
+            <iframe src={encodedValues[2]} width="800" height="450"></iframe>
           ) : (
             <p style={styles.message}>No video available</p>
           )}
         </div>
         <div style={styles.paginationWrapper}>
           <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
-          
         </div>
         <div>
           <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} />
