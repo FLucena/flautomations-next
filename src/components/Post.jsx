@@ -66,7 +66,7 @@ export default function Post(props) {
         <br />
         <div style={styles.videoWrapper}>
           {encodedValues[2] !== '' ? (
-            <iframe src={encodedValues[2]} width="800" height="450"></iframe>
+            <iframe src={encodedValues[2]} width="800" height="450" allow="autoplay"></iframe>
           ) : (
             <p style={styles.message}>No video available</p>
           )}
