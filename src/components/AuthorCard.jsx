@@ -46,9 +46,7 @@ export default function AuthorCard(props) {
         </div>
         <div>
           <p style={styles.bio}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod
-            neque id felis laoreet, vel posuere augue tincidunt. Sed vel nulla sed
-            eros venenatis pharetra.
+          Programador y Contador especializado en automatizaciones para Excel y Google Sheets. Me apasiona la inteligencia artificial y aquí compartiré consejos y soluciones innovadoras para simplificar y optimizar tus tareas diarias. 
           </p>
         </div>
       </div>

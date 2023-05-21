@@ -42,6 +42,11 @@ const styles = {
     fontSize: '24px',
     margin: '0',
     color: 'white',
+    
+  },
+  removeLinkStyle: {
+    textDecoration: 'none',
+    color: 'black',
   },
   right: {
     flex: 1,
@@ -69,17 +74,17 @@ const Navbar = () => {
           </div>
         </div>
         <div style={styles.center}>
-          <h1 style={styles.logo}>FL Automations</h1>
+          <h1 style={styles.logo}> <Link href="/" style={styles.removeLinkStyle}>FL Automations</Link></h1>
         </div>
         <div style={styles.right}>
           <div style={styles.menuItem}>
-            <Link href="/register" legacyBehavior>
-              <a style={styles.menuLink}>REGISTER</a>
+            <Link href="/register" style={styles.removeLinkStyle}>
+              REGISTER
             </Link>
           </div>
           <div style={styles.menuItem}>
-            <Link href="/login" legacyBehavior>
-              <a style={styles.menuLink}>SIGN IN</a>
+            <Link href="/login" style={styles.removeLinkStyle}>
+              SIGN IN
             </Link>
           </div>
         </div>

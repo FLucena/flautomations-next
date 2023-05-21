@@ -2,6 +2,8 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import Image from 'next/image';
 import { SliderItems } from './data';
+import Link from 'next/link';
+
 
 const styles = {
   container: {
@@ -132,7 +134,9 @@ const Slider = () => {
             <div style={styles.infoContainer}>
               <div style={styles.title}>{item.title}</div>
               <p style={styles.desc}>{item.desc}</p>
-              <button style={styles.button}>Read More</button>
+              <Link href={`/api/posts/${item.id}`}>
+                <button style={styles.button}>Leer más</button>
+              </Link>
             </div>
           </div>
         ))}
