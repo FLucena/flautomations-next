@@ -1,4 +1,3 @@
-import Mobile from "./responsive";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -17,7 +16,6 @@ const styles = {
     width: '25%',
     padding: '20px',
     backgroundColor: 'white',
-    ...Mobile({ width: '75%' }),
   },
   title: {
     fontSize: '24px',
@@ -52,20 +50,22 @@ const styles = {
 
 const Login = () => {
   return (
-    <div style={styles.container}>
+    <>
       <Navbar />
-      <div style={styles.wrapper}>
-        <h1 style={styles.title}>SIGN IN</h1>
-        <form style={styles.form}>
-          <input style={styles.input} placeholder="username" />
-          <input style={styles.input} placeholder="password" />
-          <button style={styles.button}>LOGIN</button>
-          <a style={styles.link}>DO NOT YOU REMEMBER THE PASSWORD?</a>
-          <a style={styles.link}>CREATE A NEW ACCOUNT</a>
-        </form>
-      </div>
+        <div style={styles.container}>
+          <div style={styles.wrapper}>
+            <h1 style={styles.title}>SIGN IN</h1>
+            <form style={styles.form}>
+              <input style={styles.input} placeholder="username" />
+              <input style={styles.input} placeholder="password" />
+              <button style={styles.button}>LOGIN</button>
+              <a style={styles.link}>DO NOT YOU REMEMBER THE PASSWORD?</a>
+              <a style={styles.link}>CREATE A NEW ACCOUNT</a>
+            </form>
+          </div>
+        </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
