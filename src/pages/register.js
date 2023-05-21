@@ -1,84 +1,74 @@
-import styled from "styled-components";
 import Mobile from "./responsive";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("")
-      center;
-  background-size: cover;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 40%;
-  padding: 20px;
-  background-color: white;
-  ${Mobile({ width: "75%" })}
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
-`;
-
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
-
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
-`;
+const styles = {
+  container: {
+    width: '100vw',
+    height: '100vh',
+    background: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("") center',
+    backgroundSize: 'cover',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wrapper: {
+    width: '40%',
+    padding: '20px',
+    backgroundColor: 'white',
+    ...Mobile({ width: '75%' }),
+  },
+  title: {
+    fontSize: '24px',
+    fontWeight: 300,
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  input: {
+    flex: 1,
+    minWidth: '40%',
+    margin: '20px 10px 0',
+    padding: '10px',
+  },
+  agreement: {
+    fontSize: '12px',
+    margin: '20px 0',
+  },
+  button: {
+    width: '40%',
+    border: 'none',
+    padding: '15px 20px',
+    backgroundColor: 'teal',
+    color: 'white',
+    cursor: 'pointer',
+  },
+};
 
 const Register = () => {
   return (
-    <Container>
+    <div style={styles.container}>
       <Navbar />
-        <Wrapper>
-          <Title>CREATE AN ACCOUNT</Title>
-          <Form>
-            <Input placeholder="name" />
-            <Input placeholder="last name" />
-            <Input placeholder="username" />
-            <Input placeholder="email" />
-            <Input placeholder="password" />
-            <Input placeholder="confirm password" />
-            <Agreement>
-              By creating an account, I consent to the processing of my personal
-              data in accordance with the <b>PRIVACY POLICY</b>
-            </Agreement>
-            <Button>CREATE</Button>
-          </Form>
-        </Wrapper>
-        <Footer />
-    </Container>
+      <div style={styles.wrapper}>
+        <h1 style={styles.title}>CREATE AN ACCOUNT</h1>
+        <form style={styles.form}>
+          <input style={styles.input} placeholder="name" />
+          <input style={styles.input} placeholder="last name" />
+          <input style={styles.input} placeholder="username" />
+          <input style={styles.input} placeholder="email" />
+          <input style={styles.input} placeholder="password" />
+          <input style={styles.input} placeholder="confirm password" />
+          <span style={styles.agreement}>
+            By creating an account, I consent to the processing of my personal
+            data in accordance with the <b>PRIVACY POLICY</b>
+          </span>
+          <button style={styles.button}>CREATE</button>
+        </form>
+      </div>
+      <Footer />
+    </div>
   );
 };
 

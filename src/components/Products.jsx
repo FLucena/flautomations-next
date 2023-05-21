@@ -1,21 +1,22 @@
-import styled from 'styled-components'
-import { PopularProducts } from "./data.js"
-import Product from './Product'
+import { PopularProducts } from "./data.js";
+import Product from './Product';
 
-const Container = styled.div`
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`;
+const styles = {
+  container: {
+    padding: '20px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+};
 
 const Products = () => {
   return (
-    <Container>
+    <div style={styles.container}>
       {PopularProducts.map((item, idx) => (
-        <Product item={item} key={idx}  />
+        <Product item={item} key={idx} />
       ))}
-    </Container>
+    </div>
   );
 };
 
