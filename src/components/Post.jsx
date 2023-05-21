@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AuthorCard from './AuthorCard';
 import CustomPagination from "./CustomPagination";
+import React, { useEffect, useState } from 'react'
 
 const styles = {
   wrapper: {
@@ -47,6 +48,10 @@ export default function Post(props) {
   const keys = Object.keys(props);
   const values = keys.map((key) => decodeURIComponent(props[key]));
   const encodedValues = values.map((val) => encodeURI(val));
+  const [currentPage, setCurrentPage] = useState(parseInt(id));
+  useEffect(() => {
+    setCurrentPage(parseInt(id));
+  }, [id]);
 
   return (
     <>

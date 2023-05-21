@@ -1,23 +1,23 @@
 export const SliderItems = [
     {
         id: 1,
-        img: "https://lh3.googleusercontent.com/d/1P4YINu0gHJa03cQpOrX7K3Z5amzgPCbD",
-        title: "SUMMER SALE",
-        desc: "DON'T COMPROMISE ON STYLE!",
+        img: "https://lh3.googleusercontent.com/d/1DUBA7mjczy-AXd0sMUw8PT0dCVkVWnxt",
+        title: "LIMPIEZA DE GMAIL",
+        desc: "NO DEJES QUE TU GMAIL COLAPSE!",
         bg: "f5fafd",
     },
     {
         id: 2,
-        img: "https://lh3.googleusercontent.com/d/1RpFYeehJN4UraKtC_14pVNwM0_R3VZVA",
-        title: "WINTER SALE",
-        desc: "DON'T COMPROMISE ON STYLE!",
+        img: "https://lh3.googleusercontent.com/d/1fLE18JNchUdo0hyOjH8ZIkUTfWy9fKOK",
+        title: "GESTOR DE EVENTOS/CUMPLEAÑOS",
+        desc: "NO TE OLVIDES DE LOS CUMPLEAÑOS DE LA GENTE QUE QUERES",
         bg: "fcf1ed",
     },
     {
         id: 3,
-        img: "https://lh3.googleusercontent.com/d/1Q1B3sIRL7k1Oc5gy9F4d9bW9aw1b2Z1O",
-        title: "POPULAR SALE",
-        desc: "DON'T COMPROMISE ON STYLE!",
+        img: "https://lh3.googleusercontent.com/d/1nPHulZqdnF0kM--0ywhpCgAsOTYHOm71",
+        title: "TIPOS DE CAMBIO",
+        desc: "NO LE PIERDAS EL RASTRO AL DOLAR",
         bg: "fbf0f4",
     }
 ]

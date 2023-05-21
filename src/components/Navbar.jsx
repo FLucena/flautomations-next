@@ -1,7 +1,9 @@
+import Link from 'next/link';
+
 const styles = {
   container: {
     height: '60px',
-    backgroundColor: 'light-blue',
+    backgroundColor: 'lightblue',
     marginBottom: '20px',
   },
   language: {
@@ -17,6 +19,8 @@ const styles = {
   },
   input: {
     border: 'none',
+    outline: 'none',
+    marginLeft: '5px',
   },
   wrapper: {
     padding: '10px 20px',
@@ -35,6 +39,9 @@ const styles = {
   },
   logo: {
     fontWeight: 'bold',
+    fontSize: '24px',
+    margin: '0',
+    color: 'white',
   },
   right: {
     flex: 1,
@@ -46,6 +53,8 @@ const styles = {
     fontSize: '14px',
     cursor: 'pointer',
     marginLeft: '25px',
+    textDecoration: 'none',
+    color: 'white',
   },
 };
 
@@ -56,16 +65,22 @@ const Navbar = () => {
         <div style={styles.left}>
           <span style={styles.language}>EN</span>
           <div style={styles.searchContainer}>
-            <input style={styles.input} />
+            <input style={styles.input} placeholder="Search" />
           </div>
         </div>
         <div style={styles.center}>
           <h1 style={styles.logo}>FL Automations</h1>
         </div>
         <div style={styles.right}>
-        <div style={styles.menuItem}><a href={"/register"}>REGISTER</a></div>
-          <div style={styles.menuItem}><a href={"/login"}>SIGN IN</a></div>
           <div style={styles.menuItem}>
+            <Link href="/register" legacyBehavior>
+              <a style={styles.menuLink}>REGISTER</a>
+            </Link>
+          </div>
+          <div style={styles.menuItem}>
+            <Link href="/login" legacyBehavior>
+              <a style={styles.menuLink}>SIGN IN</a>
+            </Link>
           </div>
         </div>
       </div>

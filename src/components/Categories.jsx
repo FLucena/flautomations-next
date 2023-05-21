@@ -1,9 +1,16 @@
 import { CategoriesData } from "./data.js"
 import CategoryItem from "./CategoryItem"
-import styles from './Categories.module.css';
+
+const styles = {
+    container: {
+        display: 'flex',
+        padding: '20px',
+        justifyContent: 'space-between',
+    }    
+}
 
 const Categories = () => {
-    return <div className={styles.container}>
+    return <div style={styles.container}>
           {CategoriesData.map(item=> (
               <CategoryItem item={item} key={item.id}/>
           ))}
