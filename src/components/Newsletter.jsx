@@ -1,21 +1,23 @@
 import { Send } from '@mui/icons-material';
+import { useState } from 'react';
+
 const styles = {
   container: {
-    height: '60vh',
     backgroundColor: '#fcf5f5',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+    padding: '40px 0',
   },
   title: {
     fontSize: '70px',
-    marginBottom: '20px',
+    margin: '2px',
   },
   desc: {
     fontSize: '24px',
     fontWeight: '300',
-    marginBottom: '20px',
+    margin: '20px 0',
     textAlign: 'center',
   },
   inputContainer: {
@@ -39,19 +41,41 @@ const styles = {
   },
 };
 
+
 const Newsletter = () => {
+  const [email, setEmail] = useState('');
+
+  const handleInputChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(email);
+
+    // Clear the input field after submitting
+    setEmail('');
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Newsletter</h1>
       <div style={styles.desc}>
         Mantente al tanto de las últimas automatizaciones!
       </div>
-      <div style={styles.inputContainer}>
-        <input style={styles.input} placeholder="Tu email" />
-        <button style={styles.button}>
-          <Send />
-        </button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div style={styles.inputContainer}>
+          <input
+            style={styles.input}
+            placeholder="Tu email"
+            value={email}
+            onChange={handleInputChange}
+          />
+          <button style={styles.button} type="submit">
+            <Send />
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

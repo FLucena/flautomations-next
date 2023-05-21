@@ -52,21 +52,20 @@ const Register = () => {
   return (
     <>
       <Navbar />
-        <div style={styles.wrapper}>
-          <div style={styles.container}>
-          <h1 style={styles.title}>CREATE AN ACCOUNT</h1>
+      <div style={styles.wrapper}>
+        <div style={styles.container}>
+          <h1 style={styles.title}>CREAR UNA CUENTA</h1>
           <form style={styles.form}>
-            <input style={styles.input} placeholder="name" />
-            <input style={styles.input} placeholder="last name" />
-            <input style={styles.input} placeholder="username" />
-            <input style={styles.input} placeholder="email" />
-            <input style={styles.input} placeholder="password" />
-            <input style={styles.input} placeholder="confirm password" />
+            <input style={styles.input} placeholder="Nombre" />
+            <input style={styles.input} placeholder="Apellido" />
+            <input style={styles.input} placeholder="Nombre de usuario" />
+            <input style={styles.input} placeholder="Correo electrónico" />
+            <input style={styles.input} placeholder="Contraseña" />
+            <input style={styles.input} placeholder="Confirmar contraseña" />
             <span style={styles.agreement}>
-              By creating an account, I consent to the processing of my personal
-              data in accordance with the <b>PRIVACY POLICY</b>
+              Al crear una cuenta, acepto el procesamiento de mis datos personales de acuerdo con la <b>POLÍTICA DE PRIVACIDAD</b>
             </span>
-            <button style={styles.button}>CREATE</button>
+            <button style={styles.button}>CREAR</button>
           </form>
         </div>
       </div>

@@ -59,7 +59,7 @@ const styles = {
     backgroundColor: '#f4f4f4',
   },
   imgContainer: {
-    height: '100%',
+    margin: '50px 80px',
     flex: 1,
   },
   image: {

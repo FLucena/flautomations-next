@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const styles = {
   container: {
-    height: '60px',
+    height: '50px',
     backgroundColor: 'lightblue',
     marginBottom: '20px',
   },
@@ -70,7 +70,7 @@ const Navbar = () => {
         <div style={styles.left}>
           <span style={styles.language}>EN</span>
           <div style={styles.searchContainer}>
-            <input style={styles.input} placeholder="Search" />
+            <input style={styles.input} placeholder="Buscar" />
           </div>
         </div>
         <div style={styles.center}>
@@ -79,12 +79,12 @@ const Navbar = () => {
         <div style={styles.right}>
           <div style={styles.menuItem}>
             <Link href="/register" style={styles.removeLinkStyle}>
-              REGISTER
+              REGISTRARME
             </Link>
           </div>
           <div style={styles.menuItem}>
             <Link href="/login" style={styles.removeLinkStyle}>
-              SIGN IN
+              INICIAR SESION
             </Link>
           </div>
         </div>

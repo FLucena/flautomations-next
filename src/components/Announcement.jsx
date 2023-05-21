@@ -5,6 +5,7 @@ const styles = {
     justifyContent: 'space-between',
     backgroundColor: '#f2f2f2',
     padding: '10px',
+    display: 'none',
   },
   icon: {
     fontSize: '24px',

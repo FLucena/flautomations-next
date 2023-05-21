@@ -34,7 +34,7 @@ const styles = {
   button: {
     width: '40%',
     border: 'none',
-    padding: '15px 20px',
+    padding: '8px 10px',
     backgroundColor: 'teal',
     color: 'white',
     cursor: 'pointer',
@@ -54,13 +54,13 @@ const Login = () => {
       <Navbar />
         <div style={styles.container}>
           <div style={styles.wrapper}>
-            <h1 style={styles.title}>SIGN IN</h1>
+            <h1 style={styles.title}>INICIAR SESIÓN</h1>
             <form style={styles.form}>
-              <input style={styles.input} placeholder="username" />
-              <input style={styles.input} placeholder="password" />
-              <button style={styles.button}>LOGIN</button>
-              <a style={styles.link}>DO NOT YOU REMEMBER THE PASSWORD?</a>
-              <a style={styles.link}>CREATE A NEW ACCOUNT</a>
+              <input style={styles.input} placeholder="Usuario" />
+              <input style={styles.input} placeholder="Contraseña" />
+              <button style={styles.button}>INICIAR SESIÓN</button>
+              <a style={styles.link}>NO RECUERDO LA CONTRASEÑA</a>
+              <a style={styles.link}>CREAR UNA NUEVA CUENTA</a>
             </form>
           </div>
         </div>
