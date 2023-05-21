@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function AuthorCard(props) {
-  const { authorName, authorImg } = props;
+  const { authorName, authorImg, authorDescription } = props;
   const styles = {
     authorCard: {
       maxWidth: '700px',
@@ -46,7 +46,7 @@ export default function AuthorCard(props) {
         </div>
         <div>
           <p style={styles.bio}>
-          Programador y Contador especializado en automatizaciones para Excel y Google Sheets. Me apasiona la inteligencia artificial y aquí compartiré consejos y soluciones innovadoras para simplificar y optimizar tus tareas diarias. 
+            {authorDescription}
           </p>
         </div>
       </div>

@@ -48,6 +48,7 @@ export default function Post(props) {
   const keys = Object.keys(props);
   const values = keys.map((key) => decodeURIComponent(props[key]));
   const encodedValues = values.map((val) => encodeURI(val));
+  console.log(values);
   const [currentPage, setCurrentPage] = useState(parseInt(id));
   useEffect(() => {
     setCurrentPage(parseInt(id));
@@ -77,7 +78,7 @@ export default function Post(props) {
           )}
         </div>
         <div>
-          <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} />
+          <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} authorDescription={decodeURI(encodedValues[11])} />
         </div>
         <div style={styles.paginationWrapper}>
           <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
