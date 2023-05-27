@@ -1,5 +1,11 @@
 import Image from "next/image";
 import HomeIcon from '@mui/icons-material/Home';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import MailIcon from '@mui/icons-material/Mail';
 
 const styles = {
   container: {
@@ -94,9 +100,7 @@ const Footer = () => {
       <div style={styles.left}>
         <h1 style={styles.logo}>FL Automations.</h1>
         <p style={styles.desc}>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          
         </p>
         <div style={styles.socialContainer}>
         </div>
@@ -105,15 +109,12 @@ const Footer = () => {
         <h3 style={styles.title}>Enlaces útiles</h3>
         <ul style={styles.list}>
           <li style={styles.listItem}><HomeIcon/></li>
-          <li style={styles.listItem}>Cart</li>
-          <li style={styles.listItem}>Man Fashion</li>
-          <li style={styles.listItem}>Woman Fashion</li>
-          <li style={styles.listItem}>Accessories</li>
-          <li style={styles.listItem}>My Account</li>
-          <li style={styles.listItem}>Order Tracking</li>
-          <li style={styles.listItem}>Wishlist</li>
-          <li style={styles.listItem}>Wishlist</li>
-          <li style={styles.listItem}>Terms</li>
+          <li style={styles.listItem}><AccountCircleIcon/></li>
+          <li style={styles.listItem}><InstagramIcon/></li>
+          <li style={styles.listItem}><TwitterIcon/></li>
+          <li style={styles.listItem}><LinkedInIcon/></li>
+          <li style={styles.listItem}><FacebookIcon/></li>
+          <li style={styles.listItem}><MailIcon/></li>
         </ul>
       </div>
       <div style={styles.right}>
