@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 const styles = {
   container: {
-    height: '50px',
     backgroundColor: 'lightblue',
     marginBottom: '20px',
+    width: '100%',
   },
   language: {
     fontSize: '14px',
@@ -60,6 +60,35 @@ const styles = {
     marginLeft: '25px',
     textDecoration: 'none',
     color: 'white',
+  },
+  '@media (max-width: 768px)': {
+    container: {
+      height: '70px', // Adjust the height for smaller screens
+      width: '100%',
+    },
+    searchContainer: {
+      marginLeft: '10px', // Adjust the margin for smaller screens
+    },
+    input: {
+      marginLeft: '5px', // Adjust the margin for smaller screens
+      fontSize: '12px', // Adjust the font size for smaller screens
+    },
+    wrapper: {
+      padding: '10px', // Adjust the padding for smaller screens
+    },
+    left: {
+      display: 'none', // Hide left content for smaller screens
+    },
+    center: {
+      flex: 1, // Take full width for smaller screens
+      textAlign: 'left', // Adjust the text alignment for smaller screens
+    },
+    right: {
+      justifyContent: 'flex-start', // Adjust the content alignment for smaller screens
+    },
+    menuItem: {
+      marginLeft: '15px', // Adjust the margin for smaller screens
+    },
   },
 };
 

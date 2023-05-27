@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HomeIcon from '@mui/icons-material/Home';
 
 const styles = {
   container: {
@@ -103,7 +104,7 @@ const Footer = () => {
       <div style={styles.center}>
         <h3 style={styles.title}>Enlaces útiles</h3>
         <ul style={styles.list}>
-          <li style={styles.listItem}>Home</li>
+          <li style={styles.listItem}><HomeIcon/></li>
           <li style={styles.listItem}>Cart</li>
           <li style={styles.listItem}>Man Fashion</li>
           <li style={styles.listItem}>Woman Fashion</li>

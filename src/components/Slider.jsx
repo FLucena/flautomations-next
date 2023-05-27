@@ -89,6 +89,25 @@ const styles = {
     backgroundColor: 'transparent',
     cursor: 'pointer',
   },
+  '@media (max-width: 768px)': {
+    imgContainer: {
+      margin: '50px 20px', // Adjust margins for smaller screens
+    },
+    infoContainer: {
+      padding: '20px', // Adjust padding for smaller screens
+    },
+    title: {
+      fontSize: '30px', // Adjust font size for smaller screens
+    },
+    desc: {
+      margin: '30px 0', // Adjust margin for smaller screens
+      fontSize: '16px', // Adjust font size for smaller screens
+    },
+    button: {
+      padding: '8px', // Adjust padding for smaller screens
+      fontSize: '16px', // Adjust font size for smaller screens
+    },
+  },
 };
 
 const Slider = () => {
