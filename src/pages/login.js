@@ -3,17 +3,19 @@ import Navbar from "../components/Navbar";
 
 const styles = {
   container: {
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    minHeight: '100vh',
     background: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("") center',
     backgroundSize: 'cover',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '20px',
   },
   wrapper: {
-    width: '25%',
+    width: '100%',
+    maxWidth: '400px',
     padding: '20px',
     backgroundColor: 'white',
   },
@@ -27,12 +29,11 @@ const styles = {
   },
   input: {
     flex: 1,
-    minWidth: '40%',
     margin: '10px 0',
     padding: '10px',
   },
   button: {
-    width: '40%',
+    width: '100%',
     border: 'none',
     padding: '8px 10px',
     backgroundColor: 'teal',

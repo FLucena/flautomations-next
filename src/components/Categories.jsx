@@ -1,20 +1,26 @@
-import { CategoriesData } from "./data.js"
-import CategoryItem from "./CategoryItem"
+import { CategoriesData } from "./data.js";
+import CategoryItem from "./CategoryItem";
 
 const styles = {
-    container: {
-        display: 'flex',
-        padding: '20px',
-        justifyContent: 'space-between',
-    }    
-}
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    padding: '20px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    flexDirection: 'column',
+  },
+};
 
 const Categories = () => {
-    return <div style={styles.container}>
-          {CategoriesData.map(item=> (
-              <CategoryItem item={item} key={item.id}/>
-          ))}
-      </div>;
-  };
+  return (
+    <div style={styles.container}>
+      {CategoriesData.map((item) => (
+        <CategoryItem item={item} key={item.id} />
+      ))}
+    </div>
+  );
+};
 
-export default Categories
+export default Categories;

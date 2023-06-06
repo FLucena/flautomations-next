@@ -59,6 +59,7 @@ const styles = {
     flexDirection: 'column',
   },
   title: {
+    marginTop: '30px',
     marginBottom: '30px',
   },
   list: {
@@ -76,7 +77,6 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    padding: '20px',
   },
   'contact-item': {
     marginBottom: '20px',

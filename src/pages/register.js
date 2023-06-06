@@ -3,19 +3,21 @@ import Footer from "../components/Footer";
 
 const styles = {
   container: {
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    minHeight: '100vh',
     background: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("") center',
     backgroundSize: 'cover',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '20px',
+    margin: '0 auto',
   },
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    width: '40%',
+    width: '100%',
     padding: '20px',
     backgroundColor: 'white',
   },
@@ -26,20 +28,22 @@ const styles = {
   form: {
     display: 'flex',
     flexWrap: 'wrap',
+    flexDirection: 'column',
+    padding: '5px',
   },
   input: {
     flex: 1,
-    minWidth: '40%',
     margin: '20px 10px 0',
     padding: '10px',
+    width: '30vh',
   },
   agreement: {
     fontSize: '12px',
     margin: '20px 0',
   },
   button: {
-    marginTop: '100px',
-    width: '40%',
+    marginTop: '20px',
+    width: '100%',
     border: 'none',
     padding: '15px 20px',
     backgroundColor: 'teal',
@@ -52,8 +56,8 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div style={styles.wrapper}>
-        <div style={styles.container}>
+      <div style={styles.container}>
+        <div style={styles.wrapper}>
           <h1 style={styles.title}>CREAR UNA CUENTA</h1>
           <form style={styles.form}>
             <input style={styles.input} placeholder="Nombre" />
