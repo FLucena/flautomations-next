@@ -48,7 +48,6 @@ export default function Post(props) {
   const keys = Object.keys(props);
   const values = keys.map((key) => decodeURIComponent(props[key]));
   const encodedValues = values.map((val) => encodeURI(val));
-  console.log(values);
   const [currentPage, setCurrentPage] = useState(parseInt(id));
   useEffect(() => {
     setCurrentPage(parseInt(id));
