@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Search from './Search';
 
 const Navbar = () => {
   const styles = {
