@@ -7,7 +7,7 @@ const Search = ({ onInputChange }) => {
   const handleInputChange = (event) => {
     const { value } = event.target;
     onInputChange(value);
-    console.log('Input:', value);
+    console.log('Input:', value); // Log the input value to the console
     setSearchText(value);
   };
 
