@@ -23,7 +23,12 @@ const SearchPage = ({ initialData }) => {
 
   const handleSearchInputChange = (value) => {
     console.log('Search Input:', value);
-    // Perform filtering logic here and update the filteredRowValuesList state accordingly
+    const filteredData = initialData.filter((rowValues) => {
+      const title = decodeURIComponent(rowValues[0]).toLowerCase();
+      const description = decodeURIComponent(rowValues[1]).toLowerCase();
+      return title.includes(value.toLowerCase()) || description.includes(value.toLowerCase());
+    });
+    setFilteredRowValuesList(filteredData);
   };
 
   return (
