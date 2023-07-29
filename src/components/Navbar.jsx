@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import Head from 'next/head';
+import Link from 'next/link';
+import Search from './Search';
 
 const Navbar = () => {
   const styles = {
@@ -13,21 +14,6 @@ const Navbar = () => {
     language: {
       fontSize: '14px',
       cursor: 'pointer',
-      flex: '1',
-    },
-    searchContainer: {
-      border: '0.5px solid lightgray',
-      display: 'flex',
-      alignItems: 'center',
-      marginLeft: '25px',
-      padding: '5px',
-      flex: '1',
-    },
-    input: {
-      border: 'none',
-      outline: 'none',
-      marginLeft: '5px',
-      fontSize: '14px',
       flex: '1',
     },
     wrapper: {
@@ -75,45 +61,22 @@ const Navbar = () => {
     <>
       <Head>
         <style>{`
-          .container {
-            height: 70px;
+          .input::placeholder {
+            color: #9e9ea7;
           }
-          .searchContainer {
-            margin-left: 10px;
-          }
-          .input {
-            margin-left: 5px;
-            font-size: 12px;
-          }
-          .wrapper {
-            padding: 10px;
-          }
-          .left {
-            display: none;
-          }
-          .center {
-            flex: 1;
-            text-align: left;
-          }
-          .right {
-            justify-content: flex-start;
-          }
-          .logo {
-            font-size: 20px;
-          }
-          .menuItem {
-            margin-left: 15px;
-            font-size: 12px;
-          }
+          .input:focus, input:hover {
+            outline: none;
+            border-color: rgba(234,76,137,0.4);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+           }
         `}</style>
       </Head>
       <div style={styles.container}>
         <div style={styles.wrapper}>
           <div style={styles.left}>
             <span style={styles.language}>EN</span>
-            <div style={styles.searchContainer}>
-              <input style={styles.input} placeholder="Buscar" />
-            </div>
+            <Search />
           </div>
           <div style={styles.center}>
             <h1 style={styles.logo}>
