@@ -35,17 +35,17 @@ export default async function handler(req, res) {
         rowValuesList.push(rowValues);
       }
     }
-
     const postHtml = renderToString(
       <>
         <Navbar />
-        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8vh' }}>
           {rowValuesList.map((rowValues, index) => (
             <li key={index} style={{ flexBasis: '25%', maxWidth: '25%', padding: '10px' }}>             
               <Card
                 title={decodeURIComponent(rowValues[0])}
                 description={decodeURIComponent(rowValues[1])}
                 imageUrl={decodeURIComponent(rowValues[3])}
+                linkUrl=''
               />
             </li>
           ))}
