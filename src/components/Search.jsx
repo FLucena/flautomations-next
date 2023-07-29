@@ -18,7 +18,6 @@ const Search = ({ onSearch }) => {
   const styles = {
     input: {
       width: '100%',
-      height: '40px',
       lineHeight: '28px',
       padding: '0 1rem',
       paddingLeft: '2.5rem',
@@ -38,10 +37,10 @@ const Search = ({ onSearch }) => {
      },
     group: {
       display: 'flex',
-      lineHeight: '28px',
       alignItems: 'center',
-      position: 'relative',
+      position: 'absolute',
       maxWidth: '190px',
+      marginTop: '3vh',
     },
   };
 

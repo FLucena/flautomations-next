@@ -61,17 +61,19 @@ const Navbar = () => {
   return (
     <>
       <Head>
-        <style>{`
-          .input::placeholder {
-            color: #9e9ea7;
-          }
-          .input:focus, input:hover {
-            outline: none;
-            border-color: rgba(234,76,137,0.4);
-            background-color: #fff;
-            box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
-           }
-        `}</style>
+        <style>
+          {`
+            .input::placeholder {
+              color: #9e9ea7;
+            }
+            .input:focus, input:hover {
+              outline: none;
+              border-color: rgba(234,76,137,0.4);
+              background-color: #fff;
+              box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+            }
+          `}
+        </style>
       </Head>
       <div style={styles.container}>
         <div style={styles.wrapper}>

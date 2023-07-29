@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 const styles = {
   wrapper: {
     display: 'flex',
-    flexDirection: 'column', // add this line to stack flex items vertically
-    justifyContent: 'center', // updated line to center the container horizontally
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: '2rem',
     borderRadius: '12px',
@@ -29,8 +29,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%', // Set the width of the video container to be 100% of its parent container
-    maxWidth: '100%', // Set the maximum width of the video container to be 100% of its parent container
+    width: '100%',
+    maxWidth: '100%',
     border: 'none',
     marginBottom: '20px',
   },
