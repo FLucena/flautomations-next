@@ -5,11 +5,10 @@ import Card from '../components/Card';
 import Search from '../components/Search';
 import { getData } from './api/posts/getData';
 
-const MyPage = ({ initialData }) => {
+const SearchPage = ({ initialData }) => {
   const [filteredRowValuesList, setFilteredRowValuesList] = useState(initialData);
 
   useEffect(() => {
-    // Fetch data on the client side and update the state
     async function fetchData() {
       try {
         const data = await getData();
@@ -58,11 +57,10 @@ const MyPage = ({ initialData }) => {
 };
 
 export async function getServerSideProps() {
-  // Fetch data and pass it as initialData prop to the page
   const filteredRowValuesList = await getData();
   return {
     props: { initialData: filteredRowValuesList },
   };
 }
 
-export default MyPage;
+export default SearchPage;
