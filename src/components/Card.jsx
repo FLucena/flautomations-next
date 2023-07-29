@@ -62,9 +62,8 @@ const Card = ({ title, description, imageUrl, id }) => {
               <Image
                 src='https://lh3.googleusercontent.com/d/1VcpIxpcH9BIlTqjFjFKer85y6askTNH7'
                 alt='No image'
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
+                height={'150'}
+                width={'230'}
               />
             </div>
           )}
