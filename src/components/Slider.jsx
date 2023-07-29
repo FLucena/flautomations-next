@@ -189,8 +189,6 @@ const Slider = () => {
                 width={500}
                 height={500}
                 quality={100}
-                layout="responsive" // Add layout prop with "responsive" value
-                objectFit="contain" // Add objectFit prop with "contain" value
               />
             </div>
             <div style={styles.infoContainer}>

@@ -9,7 +9,8 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    gap: '1px',
   },
 };
 

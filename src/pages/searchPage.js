@@ -57,9 +57,9 @@ const SearchPage = ({ initialData }) => {
 };
 
 export async function getServerSideProps() {
-  const filteredRowValuesList = await getData();
+  const rowValuesList = await getData();
   return {
-    props: { initialData: filteredRowValuesList },
+    props: { initialData: rowValuesList },
   };
 }
 

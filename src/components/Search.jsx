@@ -7,7 +7,7 @@ const Search = ({ onInputChange }) => {
   const handleInputChange = (event) => {
     const { value } = event.target;
     onInputChange(value);
-    console.log('Input:', value); // Log the input value to the console
+    console.log('Input:', value);
     setSearchText(value);
   };
 
@@ -21,7 +21,7 @@ const Search = ({ onInputChange }) => {
       borderRadius: '8px',
       outline: 'none',
       backgroundColor: '#f3f3f4',
-      color: '#0d0c22',
+      color: '#9e9ea7',
       transition: '.3s ease',
     },
     icon: {
