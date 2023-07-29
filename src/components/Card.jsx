@@ -53,9 +53,8 @@ const Card = ({ title, description, imageUrl, id }) => {
               <Image
                 src={imageUrl}
                 alt={title}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
+                height={'150'}
+                width={'230'}
               />
             </div>
           ) : (
