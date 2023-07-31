@@ -188,13 +188,12 @@ const Slider = () => {
                 alt="item image"
                 width={500}
                 height={500}
-                quality={100}
               />
             </div>
             <div style={styles.infoContainer}>
               <div style={styles.title}>{item.title}</div>
               <p style={styles.desc}>{item.desc}</p>
-              <Link href={`/api/posts/${item.id}`}>
+              <Link href={`/${item.id}`}>
                 <button style={styles.button}>Leer más</button>
               </Link>
             </div>

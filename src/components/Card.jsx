@@ -46,7 +46,7 @@ const styles = {
 
 const Card = ({ title, description, imageUrl, id }) => {
   return (
-    <Link href={`/api/posts/${id}`} style={{ textDecoration: 'none' }}>
+    <Link href={`/${id}`} style={{ textDecoration: 'none' }}>
         <div style={styles.card}>
           {imageUrl ? (
             <div style={styles.imageContainer}>
