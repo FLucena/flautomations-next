@@ -104,6 +104,7 @@ const MenuList = styled.div`
   width: 150px;
   border-radius: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? 'flex' : 'none')};
