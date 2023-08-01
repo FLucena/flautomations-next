@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -65,8 +65,14 @@ const MenuItem = styled.div`
   }
 `;
 
+const HamburgerContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Hamburger = styled.div`
   display: none;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: block;
@@ -86,7 +92,32 @@ const SearchBoxContainer = styled.div`
   width: 20px;
 `
 
+const MenuList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: lightblue;
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    display: ${({ open }) => (open ? 'flex' : 'none')};
+  }
+`;
+
 const Navbar = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <>
       <Container>
@@ -116,13 +147,23 @@ const Navbar = () => {
           <MenuItem>
             <Link href="/login">INICIAR SESION</Link>
           </MenuItem>
-          <Hamburger>
+        </Right>
+        <HamburgerContainer>
+          <Hamburger onClick={toggleMenu}>
             <Bar></Bar>
             <Bar></Bar>
             <Bar></Bar>
           </Hamburger>
-        </Right>
+        </HamburgerContainer>
       </Container>
+      <MenuList open={menuOpen}>
+        <MenuItem>
+          <Link href="/register">REGISTRARME</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link href="/login">INICIAR SESION</Link>
+        </MenuItem>
+      </MenuList>
     </>
   );
 };
