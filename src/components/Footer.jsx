@@ -6,128 +6,143 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import MailIcon from '@mui/icons-material/Mail';
+import styled from 'styled-components';
 
-const styles = {
-  container: {
-    display: 'flex',
-  },
-  'container > div': {
-    padding: '20px',
-  },
-  left: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  logo: {
-    marginBottom: '20px',
-  },
-  desc: {
-    marginBottom: '20px',
-  },
-  'social-container': {
-    display: 'flex',
-  },
-  'social-icon': {
-    width: '40px',
-    height: '40px',
-    borderRadius: '50%',
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '20px',
-  },
-  'social-icon > svg': {
-    fontSize: '20px',
-  },
-  'social-icon.facebook': {
-    backgroundColor: '#3b5999',
-  },
-  'social-icon.instagram': {
-    backgroundColor: '#e4405f',
-  },
-  'social-icon.twitter': {
-    backgroundColor: '#55acee',
-  },
-  'social-icon.pinterest': {
-    backgroundColor: '#e60023',
-  },
-  center: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  title: {
-    marginTop: '30px',
-    marginBottom: '30px',
-  },
-  list: {
-    margin: '0',
-    padding: '0',
-    listStyle: 'none',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  'list-item': {
-    width: '50%',
-    marginBottom: '10px',
-  },
-  right: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  'contact-item': {
-    marginBottom: '20px',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  'contact-item > svg': {
-    marginRight: '10px',
-  },
-  payment: {
-    width: '50%',
-    alignSelf: 'center',
-    marginTop: '20px',
-  },
-};
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
+const Left = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+    text-align: center;
+  }
+`;
+
+const Logo = styled.h1`
+  margin-bottom: 20px;
+`;
+
+const Desc = styled.p`
+  margin-bottom: 20px;
+`;
+
+const SocialContainer = styled.div`
+  display: flex;
+`;
+
+const SocialIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  & > svg {
+    font-size: 20px;
+  }
+`;
+
+const Center = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+  }
+`;
+
+const Title = styled.h3`
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;
+
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const ListItem = styled.li`
+  width: 50%;
+  margin-bottom: 10px;
+`;
+
+const Right = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+    text-align: center;
+  }
+`;
+
+const ContactItem = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  & > svg {
+    margin-right: 10px;
+  }
+`;
+
+const PaymentImage = styled(Image)`
+  width: 50%;
+  align-self: center;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+`;
 
 const Footer = () => {
   return (
-    <div style={styles.container}>
-      <div style={styles.left}>
-        <h1 style={styles.logo}>FL Automations.</h1>
-        <p style={styles.desc}>
-          
-        </p>
-        <div style={styles.socialContainer}>
-        </div>
-      </div>
-      <div style={styles.center}>
-        <h3 style={styles.title}>Enlaces útiles</h3>
-        <ul style={styles.list}>
-          <li style={styles.listItem}><HomeIcon/></li>
-          <li style={styles.listItem}><AccountCircleIcon/></li>
-          <li style={styles.listItem}><InstagramIcon/></li>
-          <li style={styles.listItem}><TwitterIcon/></li>
-          <li style={styles.listItem}><LinkedInIcon/></li>
-          <li style={styles.listItem}><FacebookIcon/></li>
-          <li style={styles.listItem}><MailIcon/></li>
-        </ul>
-      </div>
-      <div style={styles.right}>
-        <h3 style={styles.title}>Contact</h3>
-        <div style={styles.contactItem}>
-        </div>
-        <div style={styles.contactItem}>
-        </div>
-        <div style={styles.contactItem}>
-        </div>
-        <Image style={styles.payment} src="https://i.ibb.co/Qfvn4z6/payment.png" alt="Payment" width={232} height={25} />
-      </div>
-    </div>
+    <Container>
+      <Left>
+        <Logo>FL Automations.</Logo>
+        <Desc></Desc>
+        <SocialContainer>
+        </SocialContainer>
+      </Left>
+      <Center>
+        <Title>Enlaces útiles</Title>
+        <List>
+          <ListItem><HomeIcon/></ListItem>
+          <ListItem><AccountCircleIcon/></ListItem>
+          <ListItem><InstagramIcon/></ListItem>
+          <ListItem><TwitterIcon/></ListItem>
+          <ListItem><LinkedInIcon/></ListItem>
+          <ListItem><FacebookIcon/></ListItem>
+          <ListItem><MailIcon/></ListItem>
+        </List>
+      </Center>
+      <Right>
+        <Title>Contact</Title>
+        <ContactItem>
+        </ContactItem>
+        <ContactItem>
+        </ContactItem>
+        <ContactItem>
+        </ContactItem>
+        <PaymentImage src="https://i.ibb.co/Qfvn4z6/payment.png" alt="Payment" width={232} height={25} />
+      </Right>
+    </Container>
   );
 };
 

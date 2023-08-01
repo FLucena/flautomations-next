@@ -58,11 +58,11 @@ const SearchPage = ({ initialData }) => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '8vh',
+          gap: '20px',
         }}
       >
         {currentItems.map((rowValues, index) => (
-          <li key={index} style={{ flexBasis: '25%', maxWidth: '25%', padding: '10px' }}>
+          <li key={index} style={{margin: '10px' }}>
             <Card
               title={decodeURIComponent(rowValues[0])}
               description={decodeURIComponent(rowValues[1])}
