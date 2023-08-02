@@ -1,55 +1,77 @@
-import Image from "next/image";
+import styled from 'styled-components';
+import Image from 'next/image';
+
+const AuthorCardContainer = styled.div`
+  max-width: 700px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const Avatar = styled.div`
+  margin-right: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50vw;
+  height: 50vw;
+  max-width: 120px;
+  max-height: 120px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+`;
+
+const Bio = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #555;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
+
+const Name = styled.div`
+  flex: 50%;
+  font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
+
+const Details = styled.div`
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
 
 export default function AuthorCard(props) {
   const { authorName, authorImg, authorDescription } = props;
-  const styles = {
-    authorCard: {
-      maxWidth: '700px',
-      margin: '20px',
-      display: 'flex',
-      alignItems: 'center',
-      padding: '2rem',
-      borderRadius: '12px',
-      backgroundColor: '#fff',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    },
-    avatar: {
-      marginRight: '2rem',
-      borderRadius: '50%',
-      overflow: 'hidden',
-      width: '15vw', // set width to 15% of viewport width
-      height: '15vw', // set height to 15% of viewport height
-      maxWidth: '120px', // add max-width for smaller screens
-      maxHeight: '120px', // add max-height for smaller screens
-    },
-    bio: {
-      fontSize: '1.2rem',
-      lineHeight: '1.5',
-      color: '#555',
-    },
-    name: {
-      flex: '50%',
-    },
-    details: {
-      flex: '50%',
-    },
-  };
 
   return (
-    <div style={styles.authorCard}>
-      <div style={styles.avatar}>
+    <AuthorCardContainer>
+      <Avatar>
         <Image src={authorImg} alt="Author Avatar" width={120} height={120} />
-      </div>
-      <div style={styles.details}>
-        <div style={styles.name}>
+      </Avatar>
+      <Details>
+        <Name>
           <h1>{authorName}</h1>
-        </div>
+        </Name>
         <div>
-          <p style={styles.bio}>
-            {authorDescription}
-          </p>
+          <Bio>{authorDescription}</Bio>
         </div>
-      </div>
-    </div>
+      </Details>
+    </AuthorCardContainer>
   );
 }

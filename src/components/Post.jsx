@@ -1,47 +1,65 @@
 import Image from "next/image";
 import AuthorCard from './AuthorCard';
 import CustomPagination from "./CustomPagination";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-const styles = {
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '2rem',
-    borderRadius: '12px',
-    backgroundColor: '#fff',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    maxWidth: '1200px',
-  },
-  imageWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '20px',
-  },
-  imageWrapperP: {
-    margin: '0',
-    padding: '10px',
-  },
-  videoWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '100%',
-    border: 'none',
-    marginBottom: '20px',
-  },
-  message: {
-    color: 'red',
-    fontWeight: 'bold',
-  },
-  paginationWrapper: {
-    margin: '20px',
-  },
-};
+// Styled-components definitions
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  max-width: 1200px;
+  @media (max-width: 768px) {
+    left: 50%;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  padding: 1vh;
+  max-width: 500px;
+
+  > div {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+`;
+
+const ImageWrapperP = styled.p`
+  margin: 0;
+  padding: 10px;
+`;
+
+const VideoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  margin-bottom: 20px;
+`;
+
+const Message = styled.p`
+  color: red;
+  font-weight: bold;
+`;
+
+const PaginationWrapper = styled.div`
+  margin: 20px;
+`;
 
 export default function Post(props) {
   const { id, pageCount } = props;
@@ -55,34 +73,38 @@ export default function Post(props) {
 
   return (
     <>
-      <div style={styles.wrapper}>
+      <Wrapper>
         <h1>{decodeURI(encodedValues[0])}</h1>
         <p>{decodeURI(encodedValues[1])}</p>
         {encodedValues[3] !== '' ? (
-          <div style={styles.imageWrapper}>
-            <Image src={decodeURI(encodedValues[3])} alt="Post image" width={500} height={500} />
-          </div>
+          <ImageWrapper>
+            <Image src={decodeURI(encodedValues[3])} alt="Post image" layout="fill" className={'image'} />
+          </ImageWrapper>
         ) : (
-          <div style={styles.imageWrapper}>
-            <Image src={decodeURI(encodedValues[4])} alt="No image" width={500} height={500} />
-            <p style={styles.imageWrapperP}>No image available</p>
-          </div>
+          <ImageWrapper>
+            <Image src={decodeURI(encodedValues[4])} alt="No image" layout="fill" className={'image'} />
+            <ImageWrapperP>No image available</ImageWrapperP>
+          </ImageWrapper>
         )}
         <br />
-        <div style={styles.videoWrapper}>
+        <VideoWrapper>
           {encodedValues[2] !== '' ? (
-            <iframe src={encodedValues[2]} width="640" height="352" ></iframe>
+            <iframe src={encodedValues[2]} width="640" height="352"></iframe>
           ) : (
-            <p style={styles.message}>No video available</p>
+            <Message>No video available</Message>
           )}
-        </div>
+        </VideoWrapper>
         <div>
-          <AuthorCard authorName={decodeURI(encodedValues[6])} authorImg={decodeURI(encodedValues[8])} authorDescription={decodeURI(encodedValues[11])} />
+          <AuthorCard
+            authorName={decodeURI(encodedValues[6])}
+            authorImg={decodeURI(encodedValues[8])}
+            authorDescription={decodeURI(encodedValues[11])}
+          />
         </div>
-        <div style={styles.paginationWrapper}>
+        <PaginationWrapper>
           <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
-        </div>
-      </div>
+        </PaginationWrapper>
+      </Wrapper>
     </>
   );
 }

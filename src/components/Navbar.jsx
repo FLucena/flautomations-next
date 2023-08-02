@@ -11,7 +11,8 @@ const Container = styled.div`
 
   /* Responsive styles for screen sizes up to 768px */
   @media (max-width: 768px) {
-    flex-direction: column;
+    justify-content: center;
+    padding: 4vh;
   }
 `;
 
@@ -65,6 +66,23 @@ const MenuItem = styled.div`
   }
 `;
 
+const HamburguerItem = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    flex-direction: column;
+    
+  }
+`;
+
 const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -93,9 +111,6 @@ const SearchBoxContainer = styled.div`
 `
 
 const MenuList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   position: absolute;
   top: 100%;
   right: 0;
@@ -106,8 +121,14 @@ const MenuList = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 999;
 
+  /* Show/hide the menu list based on the 'open' prop */
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+
+  flex-wrap: wrap;
+
   @media (max-width: 768px) {
-    display: ${({ open }) => (open ? 'flex' : 'none')};
+    /* Adjust positioning for smaller devices */
+    top: ${({ open }) => (open ? '170px' : '100%')};
   }
 `;
 
@@ -158,12 +179,15 @@ const Navbar = () => {
         </HamburgerContainer>
       </Container>
       <MenuList open={menuOpen}>
-        <MenuItem>
+        <HamburguerItem>
           <Link href="/register">REGISTRARME</Link>
-        </MenuItem>
-        <MenuItem>
+        </HamburguerItem>
+        <HamburguerItem>
           <Link href="/login">INICIAR SESION</Link>
-        </MenuItem>
+        </HamburguerItem>
+        <HamburguerItem>
+          <Link href="/searchPage">BUSCADOR</Link>
+        </HamburguerItem>
       </MenuList>
     </>
   );
