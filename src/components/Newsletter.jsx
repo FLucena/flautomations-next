@@ -9,6 +9,7 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'column',
     padding: '40px 0',
+    marginTop: '5%',
   },
   title: {
     fontSize: '70px',
@@ -52,8 +53,6 @@ const Newsletter = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(email);
-
-    // Clear the input field after submitting
     setEmail('');
   };
 

@@ -100,33 +100,37 @@ const mediaQueriesStyles = {
   '@media (max-width: 768px)': {
     slide: {
       flexDirection: 'column',
+      marginLeft: '5vw',
+      height: '200vw',
+      backgroundColor: 'transparent',
     },
     imgContainer: {
-      margin: '50px 20px', // Adjust margins for smaller screens
+      margin: '50px 20px',
+      padding: '10%',
     },
     infoContainer: {
       padding: '20px',
     },
     title: {
-      fontSize: '30px', // Adjust font size for smaller screens
+      fontSize: '30px', 
     },
     desc: {
-      margin: '30px 0', // Adjust margin for smaller screens
-      fontSize: '16px', // Adjust font size for smaller screens
+      margin: '30px 0', 
+      fontSize: '16px', 
     },
     button: {
-      padding: '8px', // Adjust padding for smaller screens
-      fontSize: '16px', // Adjust font size for smaller screens
+      padding: '8px', 
+      fontSize: '16px', 
     },
     arrow: {
-      width: '40px', // Adjust arrow size for smaller screens
-      height: '40px', // Adjust arrow size for smaller screens
+      width: '40px', 
+      height: '40px', 
     },
     leftArrow: {
-      left: '5px', // Adjust left arrow position for smaller screens
+      left: '5px',
     },
     rightArrow: {
-      right: '5px', // Adjust right arrow position for smaller screens
+      right: '5px',
     },
   }
 }
@@ -178,8 +182,8 @@ const Slider = () => {
             key={item.id}
             style={{
               ...styles.slide,
-              ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
               ...styles[`slideBg${item.id}`],
+              ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
             }}
           >
             <div style={styles.imgContainer}>

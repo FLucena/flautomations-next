@@ -44,10 +44,9 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Align items in a row */
+  justify-content: flex-end;
   flex: 1;
 
-  /* Additional responsive styles for this component */
   @media (max-width: 768px) {
     justify-content: center;
   }

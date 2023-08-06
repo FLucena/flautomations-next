@@ -12,7 +12,6 @@ export default function Home() {
         <Announcement />
         <Navbar/>
         <Slider />
-        <Categories />
         <Newsletter/>
         <Footer/>
     </>
