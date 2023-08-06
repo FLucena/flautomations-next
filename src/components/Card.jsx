@@ -1,5 +1,4 @@
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 const styles = {
@@ -11,20 +10,15 @@ const styles = {
     width: '290px',
     height: '354px',
     borderRadius: '30px',
-    background: '#e0e0e0',
     boxShadow: '15px 15px 30px #bebebe, -15px -15px 30px #ffffff',
     padding: '1vh',
     overflow: 'hidden',
     margin: '1vh',
     paddingTop: '4vh',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: '100%',
-    height: '48%',
-    borderRadius: '30px 30px 0 0',
-    maxHeight: '48%',
-    maxWidth: '80%',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    cursor: 'pointer',
+    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
   },
   contentContainer: {
     display: 'flex',
@@ -32,46 +26,45 @@ const styles = {
     alignItems: 'center',
     padding: '1rem',
     height: '52%',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: '3px',
   },
   title: {
     fontSize: '1.5rem',
     fontWeight: '600',
     marginBottom: '0.5rem',
     textAlign: 'center',
+    color: '#100c08',
   },
   description: {
-    color: '#888',
+    color: '#1a1110',
   },
 };
 
 const Card = ({ title, description, imageUrl, id }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+  
   return (
     <Link href={`/${id}`} style={{ textDecoration: 'none' }}>
-        <div style={styles.card}>
-          {imageUrl ? (
-            <div style={styles.imageContainer}>
-              <Image
-                src={imageUrl}
-                alt={title}
-                height={'150'}
-                width={'230'}
-              />
-            </div>
-          ) : (
-            <div style={styles.imageContainer}>
-              <Image
-                src='https://lh3.googleusercontent.com/d/1VcpIxpcH9BIlTqjFjFKer85y6askTNH7'
-                alt='No image'
-                height={'150'}
-                width={'230'}
-              />
-            </div>
-          )}
-          <div style={styles.contentContainer}>
-            <h3 style={styles.title}>{title}</h3>
-            <p style={styles.description}>{description}</p>
-          </div>
+      <div style={{ ...styles.card, background: `url(${imageUrl})`,
+          transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div style={styles.contentContainer}>
+          <h3 style={styles.title}>{title}</h3>
+          <p style={styles.description}>{description}</p>
         </div>
+      </div>
     </Link>
   );
 };

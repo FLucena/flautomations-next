@@ -24,6 +24,7 @@ const Center = styled.div`
 const RemoveStyle = styled.a`
   text-decoration: none;
   color: black;
+  cursor: pointer;
 `;
 
 const Left = styled.div`
