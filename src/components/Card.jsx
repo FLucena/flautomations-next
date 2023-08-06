@@ -15,6 +15,7 @@ const styles = {
     overflow: 'hidden',
     margin: '1vh',
     paddingTop: '4vh',
+    backgroundColor: 'rgba(97, 158, 124, 1)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     cursor: 'pointer',
@@ -28,6 +29,7 @@ const styles = {
     height: '52%',
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: '3px',
+    minWidth: '250px',
   },
   title: {
     fontSize: '1.5rem',
@@ -54,8 +56,9 @@ const Card = ({ title, description, imageUrl, id }) => {
   
   return (
     <Link href={`/${id}`} style={{ textDecoration: 'none' }}>
-      <div style={{ ...styles.card, background: `url(${imageUrl})`,
+      <div style={{ ...styles.card,
           transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+          background: imageUrl == "" ? `rgba(97, 158, 124, 1)` : `url(${imageUrl})`,
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
