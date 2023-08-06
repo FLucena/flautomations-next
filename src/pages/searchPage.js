@@ -61,13 +61,13 @@ const SearchPage = ({ initialData }) => {
           gap: '20px',
         }}
       >
-        {currentItems.map((rowValues, index) => (
-          <li key={index} style={{margin: '10px' }}>
+        {currentItems.map((rowValues) => (
+          <li key={rowValues[13]} style={{margin: '10px' }}>
             <Card
               title={decodeURIComponent(rowValues[0])}
               description={decodeURIComponent(rowValues[1])}
               imageUrl={decodeURIComponent(rowValues[3])}
-              id={index + 1 + (currentPage - 1) * itemsPerPage}
+              id={rowValues[13]}
             />
           </li>
         ))}

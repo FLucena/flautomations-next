@@ -17,7 +17,7 @@ export async function getData() {
 
     for (let row = 0; row < numRows; row++) {
       const rowValues = [];
-      for (let col = 0; col < 4; col++) {
+      for (let col = 0; col < 14; col++) {
         const cell = sheet.getCell(row, col);
         const value = cell.value || '';
         rowValues.push(encodeURIComponent(value));

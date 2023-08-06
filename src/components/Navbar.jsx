@@ -66,23 +66,6 @@ const MenuItem = styled.div`
   }
 `;
 
-const HamburguerItem = styled.div`
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-  text-decoration: none;
-  color: white;
-  display: flex;
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    margin-bottom: 10px;
-    align-items: flex-start;
-    flex-direction: column;
-    
-  }
-`;
-
 const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -110,25 +93,44 @@ const SearchBoxContainer = styled.div`
   width: 20px;
 `
 
-const MenuList = styled.div`
+const MenuContainer = styled.div`
+  position: relative;
+  top: -100px;
+  left: 4%;
+`
+
+const MenuList = styled.ul`
   position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: lightblue;
-  padding: 10px;
-  width: 150px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
   z-index: 999;
-
-  /* Show/hide the menu list based on the 'open' prop */
   display: ${({ open }) => (open ? 'flex' : 'none')};
-
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    /* Adjust positioning for smaller devices */
-    top: ${({ open }) => (open ? '170px' : '100%')};
+    position: absolute;
+    margin-top: 05em;
+    list-style-type: none;
+    background-color: #fff;
+    box-shadow: 0 0 1px #aaa;
+    transform-origin: 50% 0;
+    width: 100%;
+    transition: transform 350ms ease-in-out;
+  }
+`;
+
+const HamburguerItem = styled.li`
+
+  @media (max-width: 768px) {
+    width: 100%;
+    transition: transform 350ms ease-in-out;
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.75em 0;
+    text-align: center;
+    color: #545454;
+    text-decoration: none;
+    transition-delay: 350ms;
+
   }
 `;
 
@@ -164,10 +166,10 @@ const Navbar = () => {
         </Center>
         <Right>
           <MenuItem>
-            <Link href="/register">REGISTRARME</Link>
+              <Link href="/register" style={{ textDecoration: 'none', color: 'black' }}>REGISTRARME</Link>
           </MenuItem>
           <MenuItem>
-            <Link href="/login">INICIAR SESION</Link>
+            <Link href="/login" style={{ textDecoration: 'none', color: 'black' }}>INICIAR SESION</Link>
           </MenuItem>
         </Right>
         <HamburgerContainer>
@@ -178,17 +180,19 @@ const Navbar = () => {
           </Hamburger>
         </HamburgerContainer>
       </Container>
-      <MenuList open={menuOpen}>
-        <HamburguerItem>
-          <Link href="/register">REGISTRARME</Link>
-        </HamburguerItem>
-        <HamburguerItem>
-          <Link href="/login">INICIAR SESION</Link>
-        </HamburguerItem>
-        <HamburguerItem>
-          <Link href="/searchPage">BUSCADOR</Link>
-        </HamburguerItem>
-      </MenuList>
+      <MenuContainer>
+        <MenuList open={menuOpen}>
+          <HamburguerItem>
+            <Link href="/register" style={{ textDecoration: 'none', color: 'black' }}>REGISTRARME</Link>
+          </HamburguerItem>
+          <HamburguerItem>
+            <Link href="/login" style={{ textDecoration: 'none', color: 'black' }}>INICIAR SESION</Link>
+          </HamburguerItem>
+          <HamburguerItem>
+            <Link href="/searchPage" style={{ textDecoration: 'none', color: 'black' }}>BUSCADOR</Link>
+          </HamburguerItem>
+        </MenuList>
+      </MenuContainer>
     </>
   );
 };
