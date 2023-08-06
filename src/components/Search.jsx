@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 const Search = ({ onInputChange }) => {
 
   const [searchText, setSearchText] = useState('');
 
-  const handleInputChange = (event) => {
+  const handleInputChange = useCallback((event) => {
     const { value } = event.target;
     onInputChange(value);
     setSearchText(value);
-  };
+  }, [onInputChange]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
