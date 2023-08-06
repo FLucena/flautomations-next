@@ -183,13 +183,13 @@ const Navbar = () => {
       <MenuContainer>
         <MenuList open={menuOpen}>
           <HamburguerItem>
-            <Link href="/register" style={{ textDecoration: 'none', color: 'black' }}>REGISTRARME</Link>
+            <Link href="/register" style={{ textDecoration: 'none', color: 'black' }}>💾 REGISTRARME</Link>
           </HamburguerItem>
           <HamburguerItem>
-            <Link href="/login" style={{ textDecoration: 'none', color: 'black' }}>INICIAR SESION</Link>
+            <Link href="/login" style={{ textDecoration: 'none', color: 'black' }}>🔑 INICIAR SESION</Link>
           </HamburguerItem>
           <HamburguerItem>
-            <Link href="/searchPage" style={{ textDecoration: 'none', color: 'black' }}>BUSCADOR</Link>
+            <Link href="/searchPage" style={{ textDecoration: 'none', color: 'black' }}>🔍 BUSCADOR</Link>
           </HamburguerItem>
         </MenuList>
       </MenuContainer>

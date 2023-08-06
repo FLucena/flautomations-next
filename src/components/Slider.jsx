@@ -75,11 +75,7 @@ const styles = {
     padding: '50px',
   },
   title: {
-    fontSize: '40px',
-    width: '100%',
-    height: '100%',
-    maxWidth: '100%',
-    maxHeight: '100%',
+    fontSize: '30px',
   },
   desc: {
     margin: '50px 0',
