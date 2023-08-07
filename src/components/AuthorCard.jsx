@@ -19,16 +19,17 @@ const AuthorCardContainer = styled.div`
 
 const Avatar = styled.div`
   margin-right: 2rem;
-  border-radius: 50%;
+  border-radius: 50% 0 50% 50%;
   overflow: hidden;
   width: 50vw;
-  height: 50vw;
-  max-width: 120px;
-  max-height: 120px;
+  height: 55vw;
+  max-width: 100px;
+  max-height: 111px;
 
   @media (max-width: 768px) {
     margin-right: 0;
     margin-bottom: 1rem;
+    border-radius: 50%;
   }
 `;
 
@@ -62,7 +63,7 @@ export default function AuthorCard(props) {
   return (
     <AuthorCardContainer>
       <Avatar>
-        <Image src={authorImg} alt="Author Avatar" width={120} height={120} />
+        <Image src={authorImg} alt="Author Avatar" width={100} height={110} />
       </Avatar>
       <Details>
         <Name>
