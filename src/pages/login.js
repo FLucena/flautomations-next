@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Login from "../components/Login";
 
 const styles = {
   container: {
@@ -49,25 +50,14 @@ const styles = {
   },
 };
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <>
       <Navbar />
-        <div style={styles.container}>
-          <div style={styles.wrapper}>
-            <h1 style={styles.title}>INICIAR SESIÓN</h1>
-            <form style={styles.form}>
-              <input style={styles.input} placeholder="Usuario" />
-              <input style={styles.input} placeholder="Contraseña" />
-              <button style={styles.button}>INICIAR SESIÓN</button>
-              <a style={styles.link}>NO RECUERDO LA CONTRASEÑA</a>
-              <a style={styles.link}>CREAR UNA NUEVA CUENTA</a>
-            </form>
-          </div>
-        </div>
+        <Login />
       <Footer />
     </>
   );
 };
 
-export default Login;
+export default LoginPage;
