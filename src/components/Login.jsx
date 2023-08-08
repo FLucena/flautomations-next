@@ -7,7 +7,7 @@ const FormContainer = styled.div`
   margin: 50px 0;
 
   @media (max-width: 768px) {
-    margin: 20px 0;
+    margin: 2rem 1rem 2rem 3rem;
   }
 `;
 

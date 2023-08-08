@@ -94,18 +94,25 @@ const styles = {
 
 const mediaQueriesStyles = {
   '@media (max-width: 768px)': {
+    container: {
+      margin: '1rem',
+    },
     slide: {
+      position: 'relative',
       flexDirection: 'column',
       marginLeft: '5vw',
-      height: '200vw',
+      height: '6rem',
       backgroundColor: 'transparent',
     },
     imgContainer: {
       margin: '50px 20px',
       padding: '10%',
+      height: '20%',
     },
     infoContainer: {
       padding: '20px',
+      margin: '150px 0',
+      maxWidth: '300px',
     },
     title: {
       fontSize: '30px', 
@@ -159,7 +166,12 @@ const Slider = () => {
   };
 
   return (
-    <div style={{ ...styles.container }}>
+    <div 
+      style={{
+        ...styles.container,
+        ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].container : {}),
+      }}
+    >
       <div
         style={{ ...styles.arrow, ...styles.leftArrow }}
         onClick={() => handleClick('left')}
@@ -182,7 +194,12 @@ const Slider = () => {
               ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
             }}
           >
-            <div style={styles.imgContainer}>
+            <div 
+              style={{
+                ...styles.imgContainer,
+                ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].imgContainer : {}),
+              }}
+            >
               <Image
                 src={item.img}
                 alt="item image"
@@ -190,7 +207,12 @@ const Slider = () => {
                 height={500}
               />
             </div>
-            <div style={styles.infoContainer}>
+            <div 
+              style={{
+                ...styles.infoContainer,
+                ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].infoContainer : {}),
+              }}
+            >
               <div style={styles.title}>{item.title}</div>
               <p style={styles.desc}>{item.desc}</p>
               <Link href={`/${item.id}`}>
