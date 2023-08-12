@@ -14,7 +14,7 @@ export default function CustomPagination(props) {
   const { currentPage, pageCount } = props;
   const renderPaginationItem = (item) => {
     const isCurrentPage = item.page === currentPage;
-    const pageLink = `/api/posts/${item.page}`;
+    const pageLink = `/${item.page}`;
     return (
       <div style={styles.container}>
         <Link key={item.page} href={pageLink} legacyBehavior>
