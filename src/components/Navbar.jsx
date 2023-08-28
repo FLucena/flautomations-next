@@ -10,7 +10,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Text,
   IconButton,
   Button,
   Menu,
@@ -32,20 +31,19 @@ const NavLink = (props) => {
     <Box
       as="a"
       px={2}
-      py={1}
+      py={2}
       rounded={'md'}
       _hover={{
         textDecoration: 'none',
         bg: useColorModeValue('gray.200', 'gray.700'),
       }}
       href={'#'}
+      fontSize="lg"
     >
       {children}
     </Box>
   );
 };
-
-// ... (other imports)
 
 export default function Navbar({ lang }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,7 +52,7 @@ export default function Navbar({ lang }) {
   return (
     <React.Fragment>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems="center" justifyContent="space-between">
+        <Flex h={20} alignItems="center" justifyContent="space-between">
           <IconButton
             size="md"
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -63,7 +61,7 @@ export default function Navbar({ lang }) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems="center">
-            <Box>
+            <Box fontSize="xl">
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
@@ -77,8 +75,11 @@ export default function Navbar({ lang }) {
               variant="solid"
               colorScheme="teal"
               size="sm"
+              fontSize="md"
               mr={4}
               leftIcon={<AddIcon />}
+              as={Link}
+              href="/register"
             >
               {content.navbar.buttonText}
             </Button>
@@ -93,9 +94,6 @@ export default function Navbar({ lang }) {
                 <Avatar name="New User" size="sm" src="" />
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Link href="/register">💾 {content.navbar.register}</Link>
-                </MenuItem>
                 <MenuItem>
                   <Link href="/login">🔑 {content.navbar.login}</Link>
                 </MenuItem>

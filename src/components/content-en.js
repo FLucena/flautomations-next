@@ -27,7 +27,13 @@ export const companyContent = {
   
   export const navbar = {
     buttonText: 'Join!',
-    register: 'Sign Up',
     login: 'Sign In',
-    search: 'Search'
+    search: 'Browse'
   };
+
+  export const newsletter = {
+    title: 'SUSCRIBE',
+    description: 'Subscribe to our newsletter & stay up to date!',
+    placeholder: 'Your email',
+    buttonText: 'Suscribe'
+  }

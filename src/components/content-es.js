@@ -27,7 +27,13 @@ export const allRightsReserved = {
 
 export const navbar = {
   buttonText: 'Ser parte',
-  register: 'Registrarme',
   login: 'Conectarme',
-  search: 'Buscar'
+  search: 'Explorar'
 };
+
+export const newsletter = {
+  title: 'SUSCRIBIRME',
+  description: '¡Suscríbete a nuestro boletín y mantente actualizado!',
+  placeholder: 'Tu email',
+  buttonText: 'Suscribirme'
+}

@@ -14,7 +14,7 @@ export default function Home() {
         <Announcement />
         <Navbar lang={defaultLang}/>
         <Slider />
-        <Newsletter/>
+        <Newsletter lang={defaultLang}/>
         <Footer lang={defaultLang}/>
     </>
   )
