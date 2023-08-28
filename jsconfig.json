@@ -2,6 +2,7 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
+        "@chakra-ui/react": ["node_modules/@chakra-ui/react"],
         "*": ["*"],
         "@/*": ["src/*"]
       }
