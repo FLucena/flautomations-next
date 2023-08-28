@@ -53,6 +53,7 @@ const styles = {
 };
 
 const Register = () => {
+  const defaultLang = "es";
   return (
     <>
       <Navbar lang={defaultLang}/>

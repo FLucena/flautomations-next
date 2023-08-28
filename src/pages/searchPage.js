@@ -6,6 +6,7 @@ import Search from '../components/Search';
 import { getData } from './api/posts/getData';
 
 const SearchPage = ({ initialData }) => {
+  const defaultLang = "es";
   const [filteredRowValuesList, setFilteredRowValuesList] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;

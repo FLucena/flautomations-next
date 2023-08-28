@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { fetchPostData } from '../utils/fetchPostData'
 
 const PostPage = ({ rowData, id }) => {
+  const defaultLang = "es";
 
   return (
     <>
