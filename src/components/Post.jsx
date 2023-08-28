@@ -4,7 +4,6 @@ import CustomPagination from "./CustomPagination";
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-// Styled-components definitions
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,10 +14,12 @@ const Wrapper = styled.div`
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   max-width: 1200px;
+  margin: 2rem auto; /* Horizontally center the component */
+  
   @media (max-width: 768px) {
-    left: 50%;
+    /* Adjust as needed for mobile layout */
   }
-`;
+};`;
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -63,48 +64,71 @@ const PaginationWrapper = styled.div`
 
 export default function Post(props) {
   const { id, pageCount } = props;
-  const keys = Object.keys(props);
-  const values = keys.map((key) => decodeURIComponent(props[key]));
-  const encodedValues = values.map((val) => encodeURI(val));
   const [currentPage, setCurrentPage] = useState(parseInt(id));
+
   useEffect(() => {
     setCurrentPage(parseInt(id));
   }, [id]);
 
-  return (
-    <>
+  try {
+    const decodedProps = Object.keys(props).reduce((decoded, key) => {
+      decoded[key] = decodeURIComponent(props[key]);
+      return decoded;
+    }, {});
+
+    return (
       <Wrapper>
-        <h1>{decodeURI(encodedValues[0])}</h1>
-        <p>{decodeURI(encodedValues[1])}</p>
-        {encodedValues[3] !== '' ? (
+        <h1>{decodedProps[0]}</h1>
+        <p>{decodedProps[1]}</p>
+        {decodedProps[3] !== '' ? (
           <ImageWrapper>
-            <Image src={decodeURI(encodedValues[3])} alt="Post image" layout="fill" className={'image'} />
+            <Image
+              src={decodedProps[3]}
+              alt="Post image"
+              className={'image'}
+              width="1000"
+              height="1000"
+
+            />
           </ImageWrapper>
         ) : (
           <ImageWrapper>
-            <Image src={decodeURI(encodedValues[4])} alt="No image" layout="fill" className={'image'} />
+            <Image
+              src={decodedProps[4]}
+              alt="No image"
+              className={'image'}
+              width="1000"
+              height="1000"
+            />
             <ImageWrapperP>No image available</ImageWrapperP>
           </ImageWrapper>
         )}
         <br />
         <VideoWrapper>
-          {encodedValues[2] !== '' ? (
-            <iframe src={encodedValues[2]} width="640" height="352"></iframe>
+          {decodedProps[2] !== '' ? (
+            <iframe src={decodedProps[2]} width="640" height="352"></iframe>
           ) : (
             <Message>No video available</Message>
           )}
         </VideoWrapper>
-        <div>
-          <AuthorCard
-            authorName={decodeURI(encodedValues[6])}
-            authorImg={decodeURI(encodedValues[8])}
-            authorDescription={decodeURI(encodedValues[11])}
-          />
-        </div>
+
+        <AuthorCard
+          authorName={decodedProps[6]}
+          authorImg={decodedProps[8]}
+          authorDescription={decodedProps[11]}
+        />
         <PaginationWrapper>
-          <CustomPagination pageCount={parseInt(pageCount)} currentPage={parseInt(id)} />
+          <CustomPagination
+            pageCount={parseInt(pageCount)}
+            currentPage={parseInt(id)}
+          />
         </PaginationWrapper>
       </Wrapper>
-    </>
-  );
+    );
+  } catch (error) {
+    // Handle the error here
+    console.error('An error occurred while rendering the Post component:', error);
+    // You can return a fallback UI or an error message here if needed
+    return <div>Oops! Something went wrong while rendering this post.</div>;
+  }
 }
