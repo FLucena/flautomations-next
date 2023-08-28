@@ -53,9 +53,9 @@ const styles = {
 const LoginPage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar lang={defaultLang}/>
         <Login />
-      <Footer />
+      <Footer lang={defaultLang}/>
     </>
   );
 };

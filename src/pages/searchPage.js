@@ -49,7 +49,7 @@ const SearchPage = ({ initialData }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar lang={defaultLang}/>
       <Search onInputChange={handleSearchInputChange} />
       <ul
         style={{
@@ -80,7 +80,7 @@ const SearchPage = ({ initialData }) => {
           Next
         </button>
       </div>
-      <Footer />
+      <Footer lang={defaultLang}/>
     </>
   );
 };

@@ -55,7 +55,7 @@ const styles = {
 const Register = () => {
   return (
     <>
-      <Navbar />
+      <Navbar lang={defaultLang}/>
       <div style={styles.container}>
         <div style={styles.wrapper}>
           <h1 style={styles.title}>CREAR UNA CUENTA</h1>
@@ -73,7 +73,7 @@ const Register = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      <Footer lang={defaultLang}/>
     </>
   );
 };

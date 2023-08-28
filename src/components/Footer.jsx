@@ -46,7 +46,7 @@ const SocialButton = ({ children, label, href }) => {
 };
 
 export default function Footer({ lang }) {
-  const content = lang === 'es' ? contentEs : contentEn;
+  const content = lang === 'en' ? contentEn : contentEs;
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}

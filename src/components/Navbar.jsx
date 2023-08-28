@@ -49,7 +49,7 @@ const NavLink = (props) => {
 
 export default function Navbar({ lang }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const content = lang === 'es' ? contentEs : contentEn;
+  const content = lang === 'en' ? contentEn : contentEs;
 
   return (
     <React.Fragment>

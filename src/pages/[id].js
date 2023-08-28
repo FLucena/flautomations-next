@@ -7,9 +7,9 @@ const PostPage = ({ rowData, id }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar lang={defaultLang}/>
       <Post {...rowData} id={id} imageSRC={rowData[3]} pageCount={1000} />
-      <Footer />
+      <Footer lang={defaultLang}/>
     </>
   );
 };
