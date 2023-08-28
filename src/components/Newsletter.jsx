@@ -30,7 +30,7 @@ export default function Newsletter({ lang }) {
     try {
       console.log(email);
       console.log(lang);
-      await axios.post('https://script.google.com/macros/s/AKfycby4Uf3SS0yaVwYblMn_QKQyluLSI07_ctd77uYxDB6dH1CB3Yi-hEau93FvnanLwWGO/exec', { email, lang });
+      await axios.get('https://script.google.com/macros/s/AKfycby4Uf3SS0yaVwYblMn_QKQyluLSI07_ctd77uYxDB6dH1CB3Yi-hEau93FvnanLwWGO/exec', { email, lang });
       setEmail('');
     } catch (error) {
       console.error('Email sending failed.', error);
