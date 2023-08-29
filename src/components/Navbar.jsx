@@ -2,15 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import * as contentEn from './content-en';
-import * as contentEs from './content-es';
-
+import { useBreakpointValue } from '@chakra-ui/react';
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  IconButton,
   Button,
   Menu,
   MenuButton,
@@ -21,7 +18,10 @@ import {
   useColorModeValue,
   Stack,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons';
+import { AddIcon } from '@chakra-ui/icons';
+import * as contentEn from './content-en';
+import * as contentEs from './content-es';
+
 
 const Links = ['', '', ''];
 
@@ -38,7 +38,7 @@ const NavLink = (props) => {
         bg: useColorModeValue('gray.200', 'gray.700'),
       }}
       href={'#'}
-      fontSize="lg"
+      fontSize="4xl"
     >
       {children}
     </Box>
@@ -48,23 +48,31 @@ const NavLink = (props) => {
 export default function Navbar({ lang }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const content = lang === 'en' ? contentEn : contentEs;
+  const fontSizeXL = useBreakpointValue({ base: 'sm', md: 'sm' });
 
   return (
     <React.Fragment>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={20} alignItems="center" justifyContent="space-between">
-          <IconButton
-            size="md"
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label="Open Menu"
-            display={{ md: 'none' }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems="center">
-            <Box fontSize="xl">
+        <Flex
+          h={20}
+          alignItems="center"
+          justifyContent="space-between"
+          direction="row"
+        >
+          <HStack
+            spacing={8}
+            alignItems="center"
+            justifyContent="flex-start"
+            w="full"
+          >
+            <Box fontSize={[ 18, 40, 40 ]} w={[150, 280, 500]}>
               <Link href="/">FL Automations</Link>
             </Box>
-            <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
+            <HStack
+              as="nav"
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}
+            >
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
@@ -75,8 +83,11 @@ export default function Navbar({ lang }) {
               variant="solid"
               colorScheme="teal"
               size="sm"
-              fontSize="md"
+              fontSize={[ 10, 14, 25 ]}
+              w={[20, 100, 180]}
+              h={[15, 15, 15]}
               mr={4}
+              padding={6}
               leftIcon={<AddIcon />}
               as={Link}
               href="/register"
