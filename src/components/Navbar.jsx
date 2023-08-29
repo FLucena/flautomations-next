@@ -83,9 +83,9 @@ export default function Navbar({ lang }) {
               variant="solid"
               colorScheme="teal"
               size="sm"
-              fontSize={[ 10, 14, 25 ]}
-              w={[20, 100, 180]}
-              h={[15, 15, 15]}
+              fontSize={[ 10, 14, 20 ]}
+              w={[20, 100, 150]}
+              h={19}
               mr={4}
               padding={6}
               leftIcon={<AddIcon />}
