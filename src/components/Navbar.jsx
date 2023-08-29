@@ -52,7 +52,7 @@ export default function Navbar({ lang }) {
 
   return (
     <React.Fragment>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} w="100%">
         <Flex
           h={20}
           alignItems="center"
@@ -65,7 +65,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[ 18, 40, 40 ]} w={[150, 280, 500]}>
+            <Box fontSize={[ 18, 40, 40 ]} w={[150, 280, 400]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
