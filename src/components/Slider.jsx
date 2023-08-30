@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { SliderItems } from './data';
 import Link from 'next/link';
+import * as contentEn from './content-en';
+import * as contentEs from './content-es';
 
 const styles = {
   container: {
@@ -95,13 +97,13 @@ const styles = {
 const mediaQueriesStyles = {
   '@media (max-width: 768px)': {
     container: {
-      margin: '1rem',
+      marginTop: '3rem',
+      height: '50rem',
+      width: '100%'
     },
     slide: {
       position: 'relative',
       flexDirection: 'column',
-      marginLeft: '5vw',
-      height: '6rem',
       backgroundColor: 'transparent',
     },
     imgContainer: {
@@ -110,8 +112,8 @@ const mediaQueriesStyles = {
       height: '20%',
     },
     infoContainer: {
-      padding: '20px',
-      margin: '150px 0',
+      padding: '3rem',
+      margin: '1rem 0',
       maxWidth: '300px',
     },
     title: {
@@ -138,7 +140,8 @@ const mediaQueriesStyles = {
   }
 }
 
-const Slider = () => {
+const Slider = ({ lang }) => {
+  const content = lang === 'en' ? contentEn : contentEs;  
   const [slideIndex, setSlideIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
