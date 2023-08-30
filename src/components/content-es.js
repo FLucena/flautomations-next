@@ -37,3 +37,24 @@ export const newsletter = {
   placeholder: 'Tu email',
   buttonText: 'Suscribirme'
 }
+
+export const login = {
+  headingText: 'Iniciar sesión',
+  emailLabel: 'Email',
+  passwordLabel: 'Contraseña',
+  loginButtonLabel: 'INICIAR SESIÓN',
+  signUpLinkText: 'Sin cuenta? ',
+  signUpLink: 'Registrarme'
+}
+
+export const signup = {
+  headingText: 'Registrarme',
+  subheadingText: 'para obtener todos los beneficios!',
+  firstNameLabel: 'Nombre',
+  lastNameLabel: 'Apellido',
+  emailLabel: 'Dirección de email',
+  passwordLabel: 'Contraseña',
+  signupButtonLabel: 'Registrarme',
+  loginLinkText: 'Ya eres usuario? ',
+  loginLink: 'Conectarme'
+}

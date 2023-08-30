@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import {
+  Button, Stack
+} from '@chakra-ui/react';
+import * as contentEn from './content-en';
+import * as contentEs from './content-es';
 
 const FormContainer = styled.div`
   display: flex;
@@ -73,26 +78,13 @@ const SVG = styled.svg`
   height: 1rem;
 `;
 
-const SubmitButton = styled.button`
-  display: block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.25rem;
-  background-color: #008080;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
-  width: 100%;
-  border: none;
-  border-radius: 0.5rem;
-  text-transform: uppercase;
-  cursor: pointer;
-`;
 
 const SignupLink = styled.p`
   color: #6B7280;
   font-size: 0.875rem;
   line-height: 1.25rem;
   text-align: center;
+  margin-top: 1rem;
 `;
 
 const A = styled.a`
@@ -109,16 +101,16 @@ const usePasswordToggle = () => {
   return [showPassword, handlePasswordToggle];
 };
 
-const Login = () => {
-
+const Login = ({ lang }) => {
+  const content = lang === 'en' ? contentEn : contentEs;  
   const [showPassword, handlePasswordToggle] = usePasswordToggle();
 
   return (
     <FormContainer>
       <Form>
-        <FormTitle>Iniciar sesión</FormTitle>
+        <FormTitle>{content.login.headingText}</FormTitle>
           <InputContainer>
-            <Input placeholder="Email" type="email" />
+            <Input placeholder={content.login.emailLabel} type="email" />
             <Span>
               <SVG stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -126,7 +118,7 @@ const Login = () => {
             </Span>
           </InputContainer>
         <InputContainer>
-            <Input placeholder="Contraseña" type={showPassword ? 'text' : 'password'} />
+            <Input placeholder={content.login.passwordLabel} type={showPassword ? 'text' : 'password'} />
             <Span onClick={handlePasswordToggle}>
             {showPassword ? (
               <SVG
@@ -145,13 +137,23 @@ const Login = () => {
               )}
             </Span>
           </InputContainer>
-          <SubmitButton type="submit">
-            Iniciar sesión
-          </SubmitButton>
+          <Stack spacing={10} pt={2}>
+            <Button
+              loadingText="Submitting"
+              size="lg"
+              bg={'#008080'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.500',
+              }}
+              marginTop="1rem">
+              {content.login.loginButtonLabel}
+            </Button>
+          </Stack>
 
-        <SignupLink>
-          Sin cuenta 
-          <A href="/register"> Registrarme</A>
+        <SignupLink >
+        {content.login.signUpLinkText}
+          <A href="/register">{content.login.signUpLink}</A>
         </SignupLink>
       </Form>
     </FormContainer>

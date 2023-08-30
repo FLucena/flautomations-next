@@ -37,3 +37,25 @@ export const companyContent = {
     placeholder: 'Your email',
     buttonText: 'Suscribe'
   }
+
+  export const login = {
+    headingText: 'Log In',
+    emailLabel: 'Email',
+    passwordLabel: 'Password',
+    loginButtonLabel: 'LOG IN',
+    signUpLinkText: 'Don\'t have an account? ',
+    signUpLink: 'Sign Up'
+  }
+  
+  export const signup = {
+    headingText: 'Sign Up',
+    subheadingText: 'to enjoy all the benefits!',
+    firstNameLabel: 'First Name',
+    lastNameLabel: 'Last Name',
+    emailLabel: 'Email Address',
+    passwordLabel: 'Password',
+    signupButtonLabel: 'Sign Up',
+    loginLinkText: 'Already a user? ',
+    loginLink: 'Log In'
+  }
+  

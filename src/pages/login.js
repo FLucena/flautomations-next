@@ -7,7 +7,7 @@ const LoginPage = () => {
   return (
     <>
       <Navbar lang={defaultLang}/>
-        <Login />
+        <Login lang={defaultLang}/>
       <Footer lang={defaultLang}/>
     </>
   );
