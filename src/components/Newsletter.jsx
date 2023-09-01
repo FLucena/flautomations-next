@@ -39,7 +39,7 @@ export default function Newsletter({ lang }) {
         popUpMsg = '¡Gracias por suscribirte a nuestro boletín!';
       }
       toast.success(popUpMsg, {
-        position: 'center',
+        position: 'bottom-right',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -56,7 +56,7 @@ export default function Newsletter({ lang }) {
         popUpMsg = 'Algo no funcionó. Por favor intenta nuevamente más adelante.';
       }
       toast.error(popUpMsg, {
-        position: 'center',
+        position: 'bottom-right',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
