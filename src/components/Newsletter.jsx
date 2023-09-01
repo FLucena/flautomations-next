@@ -1,5 +1,7 @@
 'use client'
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Flex,
   Stack,
@@ -30,8 +32,38 @@ export default function Newsletter({ lang }) {
     try {
       await axios.get(`https://script.google.com/macros/s/AKfycby4Uf3SS0yaVwYblMn_QKQyluLSI07_ctd77uYxDB6dH1CB3Yi-hEau93FvnanLwWGO/exec?email=${email}&lang=${lang}&action=subscribe`);
       setEmail('');
+      let popUpMsg;
+      if (lang == "en") {
+        popUpMsg = 'Thanks for subscribing!';
+      } else {
+        popUpMsg = '¡Gracias por suscribirte a nuestro boletín!';
+      }
+      toast.success(popUpMsg, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       console.error('Email sending failed.', error);
+      let popUpMsg;
+      if (lang == "en") {
+        popUpMsg = 'Subscription failed. Please try again later.';
+      } else {
+        popUpMsg = 'Algo no funcionó. Por favor intenta nuevamente.';
+      }
+      toast.error(popUpMsg, {
+        position: 'top-right',
+        autoClose: 3000, // Adjust as needed
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
