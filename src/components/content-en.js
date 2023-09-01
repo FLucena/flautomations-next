@@ -32,10 +32,10 @@ export const companyContent = {
   };
 
   export const newsletter = {
-    title: 'SUSCRIBE',
+    title: 'SUBSCRIBE',
     description: 'Subscribe to our newsletter & stay up to date!',
     placeholder: 'Your email',
-    buttonText: 'Suscribe'
+    buttonText: 'Subscribe'
   }
 
   export const login = {
