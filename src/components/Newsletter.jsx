@@ -39,7 +39,7 @@ export default function Newsletter({ lang }) {
         popUpMsg = '¡Gracias por suscribirte a nuestro boletín!';
       }
       toast.success(popUpMsg, {
-        position: 'top-right',
+        position: 'center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -53,11 +53,11 @@ export default function Newsletter({ lang }) {
       if (lang == "en") {
         popUpMsg = 'Subscription failed. Please try again later.';
       } else {
-        popUpMsg = 'Algo no funcionó. Por favor intenta nuevamente.';
+        popUpMsg = 'Algo no funcionó. Por favor intenta nuevamente más adelante.';
       }
       toast.error(popUpMsg, {
-        position: 'top-right',
-        autoClose: 3000, // Adjust as needed
+        position: 'center',
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

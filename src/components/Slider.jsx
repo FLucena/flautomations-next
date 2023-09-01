@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { SliderItems } from './data';
 import Link from 'next/link';
+import {
+  Box,
+  Text,
+  Button,
+} from "@chakra-ui/react";
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
 
@@ -117,7 +122,7 @@ const mediaQueriesStyles = {
       maxWidth: '300px',
     },
     title: {
-      fontSize: '30px', 
+      fontSize: '24px', 
     },
     desc: {
       margin: '30px 0', 
@@ -210,18 +215,42 @@ const Slider = ({ lang }) => {
                 height={500}
               />
             </div>
-            <div 
-              style={{
-                ...styles.infoContainer,
-                ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].infoContainer : {}),
-              }}
+            <Box
+              mt={{ base: '24px', sm: '100px', md: '36px' }}
+              w={{ base: '60%', sm: '50%' }}
+              py="10"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
             >
-              <div style={styles.title}>{item.title}</div>
-              <p style={styles.desc}>{item.desc}</p>
+              <Text
+                fontSize={{ base: '18px', sm: '26px', md: '36px' }}
+                fontWeight="bold"
+              >
+                {item.title}
+              </Text>
+              <Text
+                fontSize={{ base: '12px', sm: '14px', md: '20px' }}
+                fontWeight="500"
+                letterSpacing="3px"
+                mt="2"
+              >
+                {item.desc}
+              </Text>
               <Link href={`/${item.id}`}>
-                <button style={styles.button}>Leer más</button>
+                <Button
+                  mt="4"
+                  px="6"
+                  py="3"
+                  fontSize={{ base: '12px', sm: '14px', md: '20px' }}
+                  backgroundColor="transparent"
+                  cursor="pointer"
+                >
+                  Leer más
+                </Button>
               </Link>
-            </div>
+            </Box>
           </div>
         ))}
       </div>
