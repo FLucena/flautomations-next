@@ -4,12 +4,16 @@ import Footer from '../components/Footer';
 import Card from '../components/Card';
 import Search from '../components/Search';
 import { getData } from './api/posts/getData';
+import * as contentEn from '../components/content-en';
+import * as contentEs from '../components/content-es';
+import { Button, Flex } from '@chakra-ui/react';
 
 const SearchPage = ({ initialData }) => {
-  const defaultLang = "es";
+  const defaultLang = 'es';
+  const content = defaultLang === 'en' ? contentEn : contentEs;
   const [filteredRowValuesList, setFilteredRowValuesList] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 3;
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +29,6 @@ const SearchPage = ({ initialData }) => {
   }, [currentPage]);
 
   const handleSearchInputChange = (value) => {
-    console.log('Search Input:', value);
     const filteredData = initialData.filter((rowValues) => {
       const title = decodeURIComponent(rowValues[0]).toLowerCase();
       const description = decodeURIComponent(rowValues[1]).toLowerCase();
@@ -50,38 +53,45 @@ const SearchPage = ({ initialData }) => {
 
   return (
     <>
-      <Navbar lang={defaultLang}/>
-      <Search onInputChange={handleSearchInputChange} />
-      <ul
-        style={{
-          listStyle: 'none',
-          padding: 0,
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '20px',
-        }}
-      >
-        {currentItems.map((rowValues) => (
-          <li key={rowValues[13]} style={{margin: '10px' }}>
-            <Card
-              title={decodeURIComponent(rowValues[0])}
-              description={decodeURIComponent(rowValues[1])}
-              imageUrl={decodeURIComponent(rowValues[3])}
-              id={rowValues[13]}
-            />
-          </li>
-        ))}
-      </ul>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
-      <Footer lang={defaultLang}/>
+      <Navbar lang={defaultLang} />
+      <div style={{ margin: '10px' }}>
+        <Search onInputChange={handleSearchInputChange} />
+        <ul
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '20px',
+          }}
+        >
+          {currentItems.map((rowValues) => (
+            <li key={rowValues[13]} style={{ margin: '10px' }}>
+              <Card
+                title={decodeURIComponent(rowValues[0])}
+                description={decodeURIComponent(rowValues[1])}
+                imageUrl={decodeURIComponent(rowValues[3])}
+                id={rowValues[13]}
+              />
+            </li>
+          ))}
+        </ul>
+
+        <Flex align="center" justify="center" mt={4}>
+          {currentPage > 1 && (
+            <Button onClick={handlePreviousPage} leftIcon="<" variant="outline">
+              {content.pagination.previousPage}
+            </Button>
+          )}
+          {currentPage < totalPages && (
+            <Button onClick={handleNextPage} rightIcon=">" variant="outline">
+              {content.pagination.nextPage}
+            </Button>
+          )}
+        </Flex>
+      </div> {/* Close the container div */}
+      <Footer lang={defaultLang} />
     </>
   );
 };
