@@ -148,8 +148,9 @@ const mediaQueriesStyles = {
 const Slider = ({ lang }) => {
   const content = lang === 'en' ? contentEn : contentEs;  
   const [slideIndex, setSlideIndex] = useState(0);
-
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -159,7 +160,6 @@ const Slider = ({ lang }) => {
     handleResize();
 
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -171,8 +171,29 @@ const Slider = ({ lang }) => {
     } else {
       setSlideIndex((slideIndex) => (slideIndex < 2 ? slideIndex + 1 : 0));
     }
+    clearInterval(intervalId);
+    startAutoSlide();
   };
 
+  const startAutoSlide = () => {
+    const intervalId = setInterval(() => {
+      setSlideIndex((slideIndex) => (slideIndex < 2 ? slideIndex + 1 : 0));
+    }, 10000); // 10000 milliseconds = 10 seconds
+
+    return intervalId;
+  };
+
+
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+      const intervalId = startAutoSlide();
+      return () => {
+        clearInterval(intervalId);
+      };
+    }, 2000);
+    return () => clearTimeout(loadingTimeout);
+  }, []);
   return (
     <div 
       style={{
