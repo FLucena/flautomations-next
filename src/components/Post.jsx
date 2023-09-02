@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AuthorCard from './AuthorCard';
 import CustomPagination from "./CustomPagination";
+import { useRouter } from 'next/router'; // Import the useRouter hook
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -63,8 +64,13 @@ const PaginationWrapper = styled.div`
 `;
 
 export default function Post(props) {
-  const { id, pageCount } = props;
+  const { id, pageCount, lang } = props;
   const [currentPage, setCurrentPage] = useState(parseInt(id));
+  const router = useRouter();
+
+  const handlePageChange = (newPage) => {
+    router.push(`./${newPage}`);
+  };
 
   useEffect(() => {
     setCurrentPage(parseInt(id));
@@ -119,8 +125,10 @@ export default function Post(props) {
         />
         <PaginationWrapper>
           <CustomPagination
-            pageCount={parseInt(pageCount)}
             currentPage={parseInt(id)}
+            totalPages={parseInt(pageCount)}
+            onPageChange={handlePageChange}
+            lang={lang}
           />
         </PaginationWrapper>
       </Wrapper>

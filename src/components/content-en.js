@@ -59,3 +59,7 @@ export const companyContent = {
     loginLink: 'Log In'
   }
   
+  export const pagination = {
+    previousPage: "Previous",
+    nextPage: "Next"
+  }

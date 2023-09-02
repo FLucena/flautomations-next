@@ -67,7 +67,7 @@ const styles = {
     backgroundColor: '#f4f4f4',
   },
   imgContainer: {
-    margin: '50px 80px',
+    margin: '50px 0px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -216,9 +216,10 @@ const Slider = ({ lang }) => {
               />
             </div>
             <Box
-              mt={{ base: '24px', sm: '100px', md: '36px' }}
+              mt={{ base: '24px', sm: '100px', md: '5px' }}
               w={{ base: '60%', sm: '50%' }}
               py="10"
+              mr="40px"
               display="flex"
               justifyContent="center"
               alignItems="center"

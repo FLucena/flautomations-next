@@ -48,7 +48,6 @@ const NavLink = (props) => {
 export default function Navbar({ lang }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const content = lang === 'en' ? contentEn : contentEs;
-  const fontSizeXL = useBreakpointValue({ base: 'sm', md: 'sm' });
 
   return (
     <React.Fragment>
@@ -82,10 +81,10 @@ export default function Navbar({ lang }) {
             <Button
               variant="solid"
               colorScheme="teal"
-              size="sm"
-              fontSize={[ 10, 14, 20 ]}
-              w={[20, 100, 150]}
-              h={19}
+              size="xs"
+              fontSize={[ 12, 14, 18 ]}
+              w={[20, 100, 120]}
+              h={10}
               mr={4}
               padding={6}
               leftIcon={<AddIcon />}

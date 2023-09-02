@@ -58,3 +58,8 @@ export const signup = {
   loginLinkText: 'Ya eres usuario? ',
   loginLink: 'Conectarme'
 }
+
+export const pagination = {
+  previousPage: "Anterior",
+  nextPage: "Siguiente"
+}

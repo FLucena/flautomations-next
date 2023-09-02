@@ -4,12 +4,12 @@ import Footer from '../components/Footer';
 import { fetchPostData } from '../utils/fetchPostData'
 
 const PostPage = ({ rowData, id }) => {
-
+  const defaultLang = "es";
   return (
     <>
-      <Navbar />
-      <Post {...rowData} id={id} imageSRC={rowData[3]} pageCount={1000} />
-      <Footer />
+      <Navbar lang={defaultLang}/>
+      <Post {...rowData} id={id} imageSRC={rowData[3]} pageCount={1000} lang={defaultLang}/>
+      <Footer lang={defaultLang}/>
     </>
   );
 };
