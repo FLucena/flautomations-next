@@ -33,11 +33,14 @@ const Search = ({ onInputChange }) => {
       fill: '#9e9ea7',
       width: '1rem',
       height: '1rem',
+      marginLeft: '1rem'
      },
     group: {
       display: 'flex',
       alignItems: 'center',
       maxWidth: '190px',
+      marginTop: '2rem',
+      marginLeft: '1rem'
     },
   };
 

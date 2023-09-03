@@ -64,6 +64,7 @@ const SearchPage = ({ initialData }) => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             gap: '20px',
+            marginTop: '3rem'
           }}
         >
           {currentItems.map((rowValues) => (
