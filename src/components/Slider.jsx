@@ -7,6 +7,7 @@ import {
   Box,
   Text,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
@@ -14,7 +15,6 @@ import * as contentEs from './content-es';
 const styles = {
   container: {
     width: '100%',
-    height: '100vh',
     display: 'flex',
     position: 'relative',
     overflow: 'hidden',
@@ -103,7 +103,6 @@ const mediaQueriesStyles = {
   '@media (max-width: 768px)': {
     container: {
       marginTop: '3rem',
-      height: '50rem',
       width: '100%'
     },
     slide: {
@@ -150,6 +149,7 @@ const Slider = ({ lang }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [intervalId, setIntervalId] = useState(null);
   
 
   useEffect(() => {
@@ -178,7 +178,7 @@ const Slider = ({ lang }) => {
   const startAutoSlide = () => {
     const intervalId = setInterval(() => {
       setSlideIndex((slideIndex) => (slideIndex < 2 ? slideIndex + 1 : 0));
-    }, 10000); // 10000 milliseconds = 10 seconds
+    }, 7000); // 7000 milliseconds = 7 seconds
 
     return intervalId;
   };
@@ -195,19 +195,20 @@ const Slider = ({ lang }) => {
     return () => clearTimeout(loadingTimeout);
   }, []);
   return (
-    <div 
+    <Flex
       style={{
         ...styles.container,
         ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].container : {}),
       }}
+      h={{ base: '30rem', sm: '40rem', md: '35rem' }}
     >
-      <div
+      <Box
         style={{ ...styles.arrow, ...styles.leftArrow }}
         onClick={() => handleClick('left')}
       >
         <ArrowLeftOutlined />
-      </div>
-      <div
+      </Box>
+      <Flex
         style={{
           ...styles.wrapper,
           ...styles.transformedWrapper,
@@ -215,7 +216,7 @@ const Slider = ({ lang }) => {
         }}
       >
         {SliderItems.map((item) => (
-          <div
+          <Flex
             key={item.id}
             style={{
               ...styles.slide,
@@ -223,7 +224,7 @@ const Slider = ({ lang }) => {
               ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
             }}
           >
-            <div 
+            <Box 
               style={{
                 ...styles.imgContainer,
                 ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].imgContainer : {}),
@@ -235,7 +236,7 @@ const Slider = ({ lang }) => {
                 width={500}
                 height={500}
               />
-            </div>
+            </Box>
             <Box
               mt={{ base: '24px', sm: '100px', md: '5px' }}
               w={{ base: '60%', sm: '50%' }}
@@ -249,6 +250,7 @@ const Slider = ({ lang }) => {
               <Text
                 fontSize={{ base: '18px', sm: '26px', md: '36px' }}
                 fontWeight="bold"
+                mt={{ base: '5px', sm: '10px', md: '5px' }}
               >
                 {item.title}
               </Text>
@@ -273,16 +275,16 @@ const Slider = ({ lang }) => {
                 </Button>
               </Link>
             </Box>
-          </div>
+          </Flex>
         ))}
-      </div>
-      <div
+      </Flex>
+      <Box
         style={{ ...styles.arrow, ...styles.rightArrow }}
         onClick={() => handleClick('right')}
       >
         <ArrowRightOutlined />
-      </div>
-    </div>
+      </Box>
+    </Flex>
   );  
 };
 
