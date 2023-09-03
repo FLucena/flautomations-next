@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useBreakpointValue } from '@chakra-ui/react';
 import {
   Box,
   Flex,
@@ -64,7 +63,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[ 18, 40, 40 ]} w={[150, 280, 400]}>
+            <Box fontSize={[ 18, 30, 40 ]} w={[150, 280, 400]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
