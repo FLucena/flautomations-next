@@ -282,7 +282,7 @@ const Slider = ({ lang }) => {
                   </Button>
                 </Link>
               </Box>
-              {item.id < SliderItems.length && (
+              {item.id < SliderItems.length && !isMobile &&  (
                 <div style={styles.separator}></div>
               )}
             </Flex>
