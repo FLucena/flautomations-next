@@ -20,6 +20,11 @@ const styles = {
     overflow: 'hidden',
     flexDirection: 'row',
   },
+  separator: {
+    borderLeft: '1px dashed #000',
+    height: '100%',
+    marginLeft: '20px',
+  },
   arrow: {
     width: '50px',
     height: '50px',
@@ -200,6 +205,7 @@ const Slider = ({ lang }) => {
         ...styles.container,
         ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].container : {}),
       }}
+      mt={'3rem'}
       h={{ base: '30rem', sm: '40rem', md: '35rem' }}
     >
       <Box
@@ -208,76 +214,81 @@ const Slider = ({ lang }) => {
       >
         <ArrowLeftOutlined />
       </Box>
-      <Flex
-        style={{
-          ...styles.wrapper,
-          ...styles.transformedWrapper,
-          transform: `translateX(-${slideIndex * 100}vw)`,
-        }}
-      >
-        {SliderItems.map((item) => (
-          <Flex
-            key={item.id}
-            style={{
-              ...styles.slide,
-              ...styles[`slideBg${item.id}`],
-              ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
-            }}
-          >
-            <Box 
+      <>
+        <Flex
+          style={{
+            ...styles.wrapper,
+            ...styles.transformedWrapper,
+            transform: `translateX(-${slideIndex * 100}vw)`,
+          }}
+        >
+          {SliderItems.map((item) => (
+            <Flex
+              key={item.id}
               style={{
-                ...styles.imgContainer,
-                ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].imgContainer : {}),
+                ...styles.slide,
+                ...styles[`slideBg${item.id}`],
+                ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].slide : {}),
               }}
             >
-              <Image
-                src={item.img}
-                alt="item image"
-                width={500}
-                height={500}
-              />
-            </Box>
-            <Box
-              mt={{ base: '24px', sm: '100px', md: '5px' }}
-              w={{ base: '60%', sm: '50%' }}
-              py="10"
-              mr="40px"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              flexDirection="column"
-            >
-              <Text
-                fontSize={{ base: '18px', sm: '26px', md: '36px' }}
-                fontWeight="bold"
-                mt={{ base: '5px', sm: '10px', md: '5px' }}
+              <Box 
+                style={{
+                  ...styles.imgContainer,
+                  ...(isMobile ? mediaQueriesStyles['@media (max-width: 768px)'].imgContainer : {}),
+                }}
               >
-                {item.title}
-              </Text>
-              <Text
-                fontSize={{ base: '12px', sm: '14px', md: '20px' }}
-                fontWeight="500"
-                letterSpacing="3px"
-                mt="2"
+                <Image
+                  src={item.img}
+                  alt="item image"
+                  width={500}
+                  height={500}
+                />
+              </Box>
+              <Box
+                mt={{ base: '24px', sm: '100px', md: '5px' }}
+                w={{ base: '60%', sm: '50%' }}
+                py="10"
+                mr="40px"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                flexDirection="column"
               >
-                {item.desc}
-              </Text>
-              <Link href={`/${item.id}`}>
-                <Button
-                  mt="4"
-                  px="6"
-                  py="3"
-                  fontSize={{ base: '12px', sm: '14px', md: '20px' }}
-                  backgroundColor="transparent"
-                  cursor="pointer"
+                <Text
+                  fontSize={{ base: '18px', sm: '26px', md: '36px' }}
+                  fontWeight="bold"
+                  mt={{ base: '5px', sm: '10px', md: '5px' }}
                 >
-                  Leer más
-                </Button>
-              </Link>
-            </Box>
-          </Flex>
-        ))}
-      </Flex>
+                  {item.title}
+                </Text>
+                <Text
+                  fontSize={{ base: '12px', sm: '14px', md: '20px' }}
+                  fontWeight="500"
+                  letterSpacing="3px"
+                  mt="2"
+                >
+                  {item.desc}
+                </Text>
+                <Link href={`/${item.id}`}>
+                  <Button
+                    mt="4"
+                    px="6"
+                    py="3"
+                    fontSize={{ base: '12px', sm: '14px', md: '20px' }}
+                    backgroundColor="transparent"
+                    cursor="pointer"
+                  >
+                    Leer más
+                  </Button>
+                </Link>
+              </Box>
+              {item.id < SliderItems.length && (
+                <div style={styles.separator}></div>
+              )}
+            </Flex>
+          ))}
+        </Flex>
+      </>
       <Box
         style={{ ...styles.arrow, ...styles.rightArrow }}
         onClick={() => handleClick('right')}
@@ -285,6 +296,7 @@ const Slider = ({ lang }) => {
         <ArrowRightOutlined />
       </Box>
     </Flex>
+    
   );  
 };
 
