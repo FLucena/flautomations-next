@@ -1,4 +1,6 @@
 module.exports = {
+  assetPrefix: undefined,
+  basePath: '',
   reactStrictMode: true,
   swcMinify: true,
 
