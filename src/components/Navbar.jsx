@@ -91,22 +91,25 @@ export default function Navbar({ lang }) {
                 </Button>
               </>
             ) : (
-              // If no session is active, display a sign-in button
-              <Button
-                variant="solid"
-                colorScheme="teal"
-                size="xs"
-                fontSize={[12, 14, 18]}
-                w={[20, 100, 120]}
-                h={10}
-                mr={4}
-                padding={6}
-                leftIcon={<AddIcon />}
-                as={Link}
-                href="/register"
-              >
-                {content.navbar.buttonText}
-              </Button>
+              // If no session is active, display a sign-in button and "New User" avatar
+              <>
+                <Button
+                  variant="solid"
+                  colorScheme="teal"
+                  size="xs"
+                  fontSize={[12, 14, 18]}
+                  w={[20, 100, 120]}
+                  h={10}
+                  mr={4}
+                  padding={6}
+                  leftIcon={<AddIcon />}
+                  as={Link}
+                  href="/register"
+                >
+                  {content.navbar.buttonText}
+                </Button>
+                <Avatar name="New User" size="sm" src="" />
+              </>
             )}
             <Menu>
               <MenuButton
