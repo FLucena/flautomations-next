@@ -91,8 +91,7 @@ export default function Navbar({ lang }) {
                 </Button>
               </>
             ) : (
-              // If no session is active, display a sign-in button and "New User" avatar
-              <>
+              <Flex flexDirection="row">
                 <Button
                   variant="solid"
                   colorScheme="teal"
@@ -108,29 +107,28 @@ export default function Navbar({ lang }) {
                 >
                   {content.navbar.buttonText}
                 </Button>
-                <Avatar name="New User" size="sm" src="" />
-              </>
-            )}
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded="full"
-                variant="link"
-                cursor="pointer"
-                minW={0}
-              >
-                <Avatar name="New User" size="sm" src="" />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>
-                  <Link href="/login">🔑 {content.navbar.login}</Link>
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem>
-                  <Link href="/searchPage">🔍 {content.navbar.search}</Link>
-                </MenuItem>
-              </MenuList>
-            </Menu>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded="full"
+                  variant="link"
+                  cursor="pointer"
+                  minW={0}
+                >
+                  <Avatar name="New User" size="sm" src="" />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <Link href="/login">🔑 {content.navbar.login}</Link>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem>
+                    <Link href="/searchPage">🔍 {content.navbar.search}</Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
+          )}
           </Flex>
         </Flex>
         {isOpen && (
