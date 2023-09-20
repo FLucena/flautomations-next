@@ -1,5 +1,5 @@
 'use strict';
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -45,6 +45,7 @@ const NavLink = (props) => {
 };
 
 export default function Navbar({ lang }) {
+  const { data: session } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const content = lang === 'en' ? contentEn : contentEs;
 
@@ -63,7 +64,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[ 18, 30, 40 ]} w={[150, 280, 400]}>
+            <Box fontSize={[18, 30, 40]} w={[150, 280, 400]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
@@ -77,21 +78,36 @@ export default function Navbar({ lang }) {
             </HStack>
           </HStack>
           <Flex alignItems="center">
-            <Button
-              variant="solid"
-              colorScheme="teal"
-              size="xs"
-              fontSize={[ 12, 14, 18 ]}
-              w={[20, 100, 120]}
-              h={10}
-              mr={4}
-              padding={6}
-              leftIcon={<AddIcon />}
-              as={Link}
-              href="/register"
-            >
-              {content.navbar.buttonText}
-            </Button>
+            {session ? (
+              // If session is active, display user-related information
+              <>
+                <Avatar name={session.user.name} size="sm" src={session.user.image} />
+                <Button
+                  variant="link"
+                  fontSize={[12, 14, 18]}
+                  onClick={() => signOut()}
+                >
+                  Sign out
+                </Button>
+              </>
+            ) : (
+              // If no session is active, display a sign-in button
+              <Button
+                variant="solid"
+                colorScheme="teal"
+                size="xs"
+                fontSize={[12, 14, 18]}
+                w={[20, 100, 120]}
+                h={10}
+                mr={4}
+                padding={6}
+                leftIcon={<AddIcon />}
+                as={Link}
+                href="/register"
+              >
+                {content.navbar.buttonText}
+              </Button>
+            )}
             <Menu>
               <MenuButton
                 as={Button}
