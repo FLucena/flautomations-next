@@ -7,14 +7,5 @@ export default NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-  ],
-  callbacks: {
-    async signIn(user, account, profile) {
-      const googleProfilePictureUrl = profile.image;
-      return {
-        ...user,
-        googleProfilePictureUrl,
-      };
-    },
-  },
+  ]
 })
