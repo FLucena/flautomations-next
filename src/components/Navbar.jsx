@@ -79,16 +79,27 @@ export default function Navbar({ lang }) {
           </HStack>
           <Flex alignItems="center">
             {session ? (
-              // If session is active, display user-related information
               <>
-                <Avatar name={session.user.name} size="sm" src={session.user.image} />
-                <Button
+                <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded="full"
                   variant="link"
-                  fontSize={[12, 14, 18]}
-                  onClick={() => signOut()}
+                  cursor="pointer"
+                  minW={0}
                 >
-                  Sign out
-                </Button>
+                  <Avatar name={session.user.name} size="sm" src={session.user.image} />
+                </MenuButton>
+                <MenuList> 
+                  <MenuItem>
+                    <Link href="/searchPage">🔍 {content.navbar.search}</Link>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem>
+                    <Link onClick={() => signOut()} href="">✖️{content.navbar.signOut}</Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
               </>
             ) : (
               <Flex flexDirection="row">

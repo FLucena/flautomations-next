@@ -28,7 +28,8 @@ export const companyContent = {
   export const navbar = {
     buttonText: 'Join!',
     login: 'Sign In',
-    search: 'Browse'
+    search: 'Browse',
+    signOut: 'Sign Out'
   };
 
   export const newsletter = {

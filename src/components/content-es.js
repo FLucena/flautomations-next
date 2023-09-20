@@ -28,7 +28,8 @@ export const allRightsReserved = {
 export const navbar = {
   buttonText: 'Ser parte',
   login: 'Conectarme',
-  search: 'Explorar'
+  search: 'Explorar',
+  signOut: 'Desconectarme'
 };
 
 export const newsletter = {
