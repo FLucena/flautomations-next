@@ -53,36 +53,16 @@ export default function Footer({ lang }) {
       color={useColorModeValue('gray.700', 'gray.200')}
     >
       <Container as={Stack} maxW={'6xl'} py={10}>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
+        <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={8}>
           <Stack align={['flex-start', 'center']} mx={['0', 'auto']}>
             <ListHeader>{content.companyContent.header}</ListHeader>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./aboutus'}>
             {content.companyContent.aboutUs}
             </Box>
-            <Box as="a" href={'#'}>
-            {content.companyContent.blog}
-            </Box>
-            <Box as="a" href={'#'}>
-            {content.companyContent.careers}
-            </Box>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./contactus'}>
             {content.companyContent.contactUs}
             </Box>
           </Stack>
-
-          <Stack align={['flex-start', 'center']} mx={['0', 'auto']}>
-            <ListHeader>{content.supportContent.header}</ListHeader>
-            <Box as="a" href={'#'}>
-            {content.supportContent.helpCenter}
-            </Box>
-            <Box as="a" href={'#'}>
-            {content.supportContent.safetyCenter}
-            </Box>
-            <Box as="a" href={'#'}>
-            {content.supportContent.communityGuidelines}
-            </Box>
-          </Stack>
-
           <Stack align={['flex-start', 'center']} mx={['0', 'auto']}>
             <ListHeader>{content.legalContent.header}</ListHeader>
             <Box as="a" href={'#'}>
@@ -121,7 +101,7 @@ export default function Footer({ lang }) {
             <SocialButton label={'Twitter'} href={'#'}>
               <FaTwitter />
             </SocialButton>
-            <SocialButton label={'YouTube'} href={'https://www.youtube.com/flautomations/'}>
+            <SocialButton label={'YouTube'} href={'https://www.youtube.com/channel/UCl6GFLN8zi781evyvnUOc2g'}>
               <FaYoutube />
             </SocialButton>
             <SocialButton label={'Instagram'} href={'https://www.instagram.com/flautomations/'}>

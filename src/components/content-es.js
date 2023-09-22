@@ -29,7 +29,8 @@ export const navbar = {
   buttonText: 'Ser parte',
   login: 'Conectarme',
   search: 'Explorar',
-  signOut: 'Desconectarme'
+  signOut: 'Desconectarme',
+  favorites: 'Mis favoritos'
 };
 
 export const newsletter = {

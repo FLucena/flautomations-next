@@ -55,42 +55,6 @@ const SearchPage = ({ initialData }) => {
     <>
       <Navbar lang={defaultLang} />
       <div style={{ margin: '10px' }}>
-        <Search onInputChange={handleSearchInputChange} />
-        <ul
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '20px',
-            marginTop: '3rem'
-          }}
-        >
-          {currentItems.map((rowValues) => (
-            <li key={rowValues[13]} style={{ margin: '10px' }}>
-              <Card
-                title={decodeURIComponent(rowValues[0])}
-                description={decodeURIComponent(rowValues[1])}
-                imageUrl={decodeURIComponent(rowValues[3])}
-                id={rowValues[13]}
-              />
-            </li>
-          ))}
-        </ul>
-
-        <Flex align="center" justify="center" mt={4}>
-          {currentPage > 1 && (
-            <Button onClick={handlePreviousPage} leftIcon="<" variant="outline">
-              {content.pagination.previousPage}
-            </Button>
-          )}
-          {currentPage < totalPages && (
-            <Button onClick={handleNextPage} rightIcon=">" variant="outline">
-              {content.pagination.nextPage}
-            </Button>
-          )}
-        </Flex>
       </div>
       <Footer lang={defaultLang} />
     </>

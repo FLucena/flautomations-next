@@ -1,4 +1,4 @@
-  import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
@@ -24,6 +24,5 @@ export async function fetchPostData(id) {
     return rowValues;
   } catch (error) {
     console.error(error);
-    throw new Error('Failed to fetch post data.');
   }
 }

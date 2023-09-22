@@ -29,7 +29,8 @@ export const companyContent = {
     buttonText: 'Join!',
     login: 'Sign In',
     search: 'Browse',
-    signOut: 'Sign Out'
+    signOut: 'Sign Out',
+    favorites: 'My Favorites'
   };
 
   export const newsletter = {

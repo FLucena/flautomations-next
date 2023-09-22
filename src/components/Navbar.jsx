@@ -96,6 +96,10 @@ export default function Navbar({ lang }) {
                   </MenuItem>
                   <MenuDivider />
                   <MenuItem>
+                    <Link href="/favorites">❤️ {content.navbar.favorites}</Link>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem>
                     <Link onClick={() => signOut()} href="">✖️{content.navbar.signOut}</Link>
                   </MenuItem>
                 </MenuList>
