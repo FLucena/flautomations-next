@@ -14,6 +14,7 @@ import {
 import { useRouter } from 'next/router';
 import AuthorCard from './AuthorCard';
 import CustomPagination from './CustomPagination';
+import LikeButton from './LikeButtons';
 
 export default function Post(props) {
   const { id, pageCount, lang } = props;
@@ -95,6 +96,9 @@ export default function Post(props) {
           />
         </Flex>
         <Box margin="20px">
+          <LikeButton
+            itemId={parseInt(id)}
+          />
           <CustomPagination
             currentPage={parseInt(id)}
             totalPages={parseInt(pageCount)}

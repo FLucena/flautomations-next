@@ -29,7 +29,7 @@ export default function AuthorCard(props) {
         maxW="100px"
         maxH="111px"
       >
-        <NextImage src={authorImg} alt="Author Avatar" width={100} height={110} />
+        <NextImage src={authorImg} alt="Author Avatar" width={100} height={100} />
       </Avatar>
       <Flex direction="column" flex="50%">
         <Text fontSize="1.8rem" mb="1rem">

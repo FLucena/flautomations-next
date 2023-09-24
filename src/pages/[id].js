@@ -15,7 +15,7 @@ const PostPage = ({ rowData, id }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const rowData = await fetchPostData(params.id);
+  const rowData = await fetchPostData(parseInt(params.id) + 1);
   return {
     props: {
       rowData,

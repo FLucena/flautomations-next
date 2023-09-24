@@ -15,7 +15,7 @@ export async function getData() {
     const rowValuesList = [];
     await sheet.loadCells();
 
-    for (let row = 0; row < numRows; row++) {
+    for (let row = 1; row < numRows; row++) {
       const rowValues = [];
       for (let col = 0; col < 14; col++) {
         const cell = sheet.getCell(row, col);
