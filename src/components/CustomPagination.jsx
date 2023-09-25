@@ -1,10 +1,12 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex, useBreakpointValue } from '@chakra-ui/react';
 import * as React from 'react';
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
 
 const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
   const content = lang === 'en' ? contentEn : contentEs;
+  const fontSize = useBreakpointValue({ base: '3xs', md: 'md', lg: 'lg' });
+
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       onPageChange(newPage);
@@ -21,7 +23,8 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
         <Button
           key={page}
           onClick={() => handlePageChange(page)}
-          variant={currentPage === page ? "solid" : "outline"}
+          variant={currentPage === page ? 'solid' : 'outline'}
+          fontSize={fontSize} // Apply responsive font size
         >
           {page}
         </Button>
@@ -37,6 +40,7 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           onClick={() => handlePageChange(currentPage - 1)}
           leftIcon={'<'}
           variant="outline"
+          fontSize={fontSize} // Apply responsive font size
         >
           {content.pagination.previousPage}
         </Button>
@@ -47,6 +51,7 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           onClick={() => handlePageChange(currentPage + 1)}
           rightIcon={'>'}
           variant="outline"
+          fontSize={fontSize} // Apply responsive font size
         >
           {content.pagination.nextPage}
         </Button>

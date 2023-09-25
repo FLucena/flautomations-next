@@ -5,16 +5,15 @@ import {
   Heading,
   Text,
   Image,
-  VStack,
   Alert,
   AlertIcon,
-  Flex,
-  Spacer
+  Flex
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import AuthorCard from './AuthorCard';
 import CustomPagination from './CustomPagination';
-import LikeButton from './LikeButtons';
+import LikeButton from './LikeButton';
+import FavoriteButton from './FavoriteButton';
 
 export default function Post(props) {
   const { id, pageCount, lang } = props;
@@ -96,9 +95,14 @@ export default function Post(props) {
           />
         </Flex>
         <Box margin="20px">
-          <LikeButton
-            itemId={parseInt(id)}
-          />
+          <Center>
+            <Box mx="5">
+              <LikeButton itemId={parseInt(id)} />
+            </Box>
+            <Box mx="5">
+              <FavoriteButton itemId={parseInt(id)} />
+            </Box>
+          </Center>
           <CustomPagination
             currentPage={parseInt(id)}
             totalPages={parseInt(pageCount)}
@@ -109,9 +113,7 @@ export default function Post(props) {
       </Box>
     );
   } catch (error) {
-    // Handle the error here
     console.error('An error occurred while rendering the Post component:', error);
-    // You can return a fallback UI or an error message here if needed
     return <div>Oops! Something went wrong while rendering this post.</div>;
   }
 }
