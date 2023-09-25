@@ -21,8 +21,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
 
-
-const Links = ['', '', ''];
+const Links = [''];
 
 const NavLink = (props) => {
   const { children } = props;
@@ -48,6 +47,8 @@ export default function Navbar({ lang }) {
   const { data: session } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const content = lang === 'en' ? contentEn : contentEs;
+
+  
 
   return (
     <React.Fragment>

@@ -1,10 +1,11 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from "next/image";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Button, Stack, Spacer, Input, Text } from '@chakra-ui/react';
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
+import axios from 'axios';
 
 const FormContainer = styled.div`
   display: flex;
@@ -86,6 +87,21 @@ const Login = ({ lang }) => {
   const { data: session } = useSession();
   const content = lang === 'en' ? contentEn : contentEs;  
   const [showPassword, handlePasswordToggle] = usePasswordToggle();
+
+  useEffect(() => {
+    const handleUserData = async () => {
+      try {
+        await axios.post('/api/setUserInfo', { id: session.user.email });
+      } catch (error) {
+        console.error('Error getting data: ', error);
+      }
+    };
+
+    if (session) {
+      handleUserData();
+    }
+  }, );
+
   if (session) {
     return (
       <FormContainer>

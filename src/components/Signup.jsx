@@ -12,8 +12,7 @@ import {
   Button,
   Heading,
   Text,
-  useColorModeValue,
-  Link,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import * as contentEn from './content-en';

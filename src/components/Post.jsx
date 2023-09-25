@@ -59,6 +59,7 @@ export default function Post(props) {
                 height="auto"
                 my="1vh"
                 maxW="500px"
+                priority="true"
               />        
             </Flex>
         ) : (
