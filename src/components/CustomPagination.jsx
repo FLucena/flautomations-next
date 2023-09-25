@@ -5,7 +5,7 @@ import * as contentEs from './content-es';
 
 const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
   const content = lang === 'en' ? contentEn : contentEs;
-  const fontSize = useBreakpointValue({ base: '3xs', md: 'md', lg: 'lg' });
+  const fontSize = useBreakpointValue({ base: 'xs', md: 'md', lg: 'lg' });
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -42,7 +42,6 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           variant="outline"
           fontSize={fontSize} // Apply responsive font size
         >
-          {content.pagination.previousPage}
         </Button>
       )}
       {renderPageButtons()}
@@ -53,7 +52,6 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           variant="outline"
           fontSize={fontSize} // Apply responsive font size
         >
-          {content.pagination.nextPage}
         </Button>
       )}
     </Flex>

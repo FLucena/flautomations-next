@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Center, Icon } from '@chakra-ui/react';
 import { AiFillStar , AiOutlineStar } from 'react-icons/ai';
 import axios from 'axios';
 
 const FavoriteButton = ({ itemId }) => {
   const [favorited, setFavorited] = useState(false);
+  const [favoriteCounter, setFavoriteCounter] = useState(0);
+
+  useEffect(() => {
+    axios.get(`/api/favorites?itemId=${itemId}`)
+      .then(response => {
+       console.log(response);
+        setFavoriteCounter(response.data.counter);
+      })
+      .catch(error => {
+        console.error('Error fetching like count:', error);
+      });
+ }, [itemId]);
 
   const handleFavorite = async () => {
     try {
       setFavorited(true);
+      setFavoriteCounter(favoriteCounter + 1);
       await axios.post('/api/favorites', { itemId: itemId, isFavorited: true });
+      favoriteCounter = await axios.post('api/favorites', { itemId: itemId});
     } catch (error) {
       console.error('Error favoriting item:', error);
     }
@@ -18,6 +32,7 @@ const FavoriteButton = ({ itemId }) => {
   const handleUnfavorite = async () => {
     try {
       setFavorited(false);
+      setFavoriteCounter(favoriteCounter - 1);
       await axios.post('/api/favorites', { itemId: itemId, isFavorited: false });
     } catch (error) {
       console.error('Error unfavoriting item:', error);
@@ -33,7 +48,7 @@ const FavoriteButton = ({ itemId }) => {
             leftIcon={<Icon as={AiFillStar} />}
             onClick={handleUnfavorite}
             >
-            Unfavorite
+            {favoriteCounter}
             </Button>
         </Center>
       ) : (
@@ -43,7 +58,7 @@ const FavoriteButton = ({ itemId }) => {
             leftIcon={<Icon as={AiOutlineStar} />}
             onClick={handleFavorite}
             >
-            Favorite
+            {favoriteCounter}
             </Button>
         </Center>
       )}
