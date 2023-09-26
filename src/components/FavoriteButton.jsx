@@ -10,7 +10,6 @@ const FavoriteButton = ({ itemId }) => {
   useEffect(() => {
     axios.get(`/api/favorites?itemId=${itemId}`)
       .then(response => {
-       console.log(response);
         setFavoriteCounter(response.data.counter);
       })
       .catch(error => {
@@ -23,7 +22,6 @@ const FavoriteButton = ({ itemId }) => {
       setFavorited(true);
       setFavoriteCounter(favoriteCounter + 1);
       await axios.post('/api/favorites', { itemId: itemId, isFavorited: true });
-      favoriteCounter = await axios.post('api/favorites', { itemId: itemId});
     } catch (error) {
       console.error('Error favoriting item:', error);
     }
