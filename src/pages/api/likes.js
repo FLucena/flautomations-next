@@ -32,6 +32,41 @@ export async function handleLike(itemId, isLiked) {
     }
 }
 
+export async function setLikedPost(itemId, userEmail) {
+    try {
+        await doc.useServiceAccountAuth({
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
+        });
+        await doc.loadInfo();
+        const sheet = doc.sheetsByIndex[5];
+
+        // Load all cells before looping through them
+        await sheet.loadCells();
+
+        for (let row = 1; row < sheet.rowCount; row++) {
+            const value = sheet.getCell(row, 0).value;
+            if (value == userEmail) {
+                const rawLikes = sheet.getCell(row-1, 2).value || '';
+                let likes;
+                if (rawLikes.length > 1) {
+                    newList = rawLikes + "," + itemId;
+                    likes = newList.split(',');
+                    sheet.getCell(row-1, 2).value = likes;
+                } else if (rawLikes.length == 1) {
+                    sheet.getCell(row-1, 2).value = rawLikes + "," + itemId;
+                } else {
+                    sheet.getCell(row-1, 2).value = itemId; 
+                }
+                await sheet.getCell(row-1, 2).save();
+                return;
+            }
+        }
+    } catch (error) {
+        console.error('Error updating likes in Google Sheets:', error);
+    }
+}
+
 export async function getLikes(itemId) {
     try {
         await doc.useServiceAccountAuth({
@@ -56,16 +91,53 @@ export async function getLikes(itemId) {
     }
 }
 
+export async function getItemStatus(userEmail, itemId) {
+    try {
+        await doc.useServiceAccountAuth({
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
+        });
+        await doc.loadInfo();
+        const sheet = doc.sheetsByIndex[5];
+
+        // Load all cells before looping through them
+        await sheet.loadCells();
+        for (let row = 1; row < sheet.rowCount; row++) {
+            const value = sheet.getCell(row, 0).value;
+            if (value == userEmail) {
+                const rawLikes = sheet.getCell(row, 2).value || '';
+                let likes;
+                if (rawLikes.toString().includes(",")) {
+                    likes = rawLikes.split(',');
+                    return likes.includes(itemId);
+                } else {
+                    return rawLikes == itemId;
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error getting likes in Google Sheets:', error);
+    }
+}
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         const itemId = req.body.itemId;
         const isLiked = req.body.isLiked;
+        const userEmail = req.body.userEmail;
+        await setLikedPost(itemId, userEmail);
         await handleLike(itemId, isLiked);
         res.status(200).json({ message: 'Like/Unlike processed successfully' });
     } else if (req.method === 'GET') {
         const itemId = req.query.itemId;
+        const userEmail = req.query.userEmail;
         const counter = await getLikes(itemId);
-        res.status(200).json({ counter: counter });
+        if (userEmail != 'undefined') {
+            const bool = await getItemStatus(userEmail, itemId);
+            res.status(200).json({ counter: counter, bool: bool });
+        } else {
+            res.status(200).json({ counter: counter });
+        }
     } else {
         res.status(405).end();
     }

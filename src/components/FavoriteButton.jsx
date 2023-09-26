@@ -1,3 +1,4 @@
+import { useSession, signIn, signOut } from "next-auth/react";
 import React, { useState, useEffect } from 'react';
 import { Button, Center, Icon } from '@chakra-ui/react';
 import { AiFillStar , AiOutlineStar } from 'react-icons/ai';
@@ -6,16 +7,22 @@ import axios from 'axios';
 const FavoriteButton = ({ itemId }) => {
   const [favorited, setFavorited] = useState(false);
   const [favoriteCounter, setFavoriteCounter] = useState(0);
+  const { data: session } = useSession();
+  let userEmail;
+  session ? userEmail = session.user.email : '';
 
   useEffect(() => {
-    axios.get(`/api/favorites?itemId=${itemId}`)
+    axios.get(`/api/favorites?itemId=${itemId}&userEmail=${userEmail}`)
       .then(response => {
+        if (response.data.bool) {
+          setFavorited(response.data.bool);
+        }
         setFavoriteCounter(response.data.counter);
       })
       .catch(error => {
         console.error('Error fetching like count:', error);
       });
- }, [itemId]);
+ }, [itemId, userEmail]);
 
   const handleFavorite = async () => {
     try {
@@ -36,6 +43,10 @@ const FavoriteButton = ({ itemId }) => {
       console.error('Error unfavoriting item:', error);
     }
   };
+
+  if (!session) {
+    return null;
+  }
 
   return (
     <div>
