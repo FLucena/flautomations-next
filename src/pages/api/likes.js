@@ -47,14 +47,12 @@ export async function setLikedPost(itemId, userEmail) {
         for (let row = 1; row < sheet.rowCount; row++) {
             const value = sheet.getCell(row, 0).value;
             if (value == userEmail) {
-                const rawLikes = sheet.getCell(row-1, 2).value || '';
+                const rawLikes = sheet.getCell(row-1, 2).value|| '';
                 let likes;
-                if (rawLikes.length > 1) {
-                    newList = rawLikes + "," + itemId;
-                    likes = newList.split(',');
-                    sheet.getCell(row-1, 2).value = likes;
-                } else if (rawLikes.length == 1) {
-                    sheet.getCell(row-1, 2).value = rawLikes + "," + itemId;
+                if (rawLikes.toString().length >= 1) {
+                    const newList = rawLikes + "," + itemId;
+                    likes = newList.split(',').sort((a, b) => a - b);
+                    sheet.getCell(row-1, 2).value = likes.join(',');
                 } else {
                     sheet.getCell(row-1, 2).value = itemId; 
                 }
@@ -99,8 +97,6 @@ export async function getItemStatus(userEmail, itemId) {
         });
         await doc.loadInfo();
         const sheet = doc.sheetsByIndex[5];
-
-        // Load all cells before looping through them
         await sheet.loadCells();
         for (let row = 1; row < sheet.rowCount; row++) {
             const value = sheet.getCell(row, 0).value;

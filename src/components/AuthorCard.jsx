@@ -4,7 +4,7 @@ import {
   Flex,
   Avatar,
 } from '@chakra-ui/react';
-import NextImage from 'next/image';
+import Image from 'next/image';
 
 export default function AuthorCard(props) {
   const { authorName, authorImg, authorDescription } = props;
@@ -29,7 +29,12 @@ export default function AuthorCard(props) {
         maxW="100px"
         maxH="111px"
       >
-        <NextImage src={authorImg} alt="Author Avatar" width={100} height={100} />
+        <Image
+          src={authorImg}
+          alt="Author Avatar"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </Avatar>
       <Flex direction="column" flex="50%">
         <Text fontSize="1.8rem" mb="1rem">
