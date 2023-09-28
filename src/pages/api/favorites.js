@@ -32,6 +32,39 @@ export async function handleFavorite(itemId, isFavorited) {
     }
 }
 
+export async function setFavoritedPost(itemId, userEmail) {
+    try {
+        await doc.useServiceAccountAuth({
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
+        });
+        await doc.loadInfo();
+        const sheet = doc.sheetsByIndex[5];
+
+        // Load all cells before looping through them
+        await sheet.loadCells();
+
+        for (let row = 1; row < sheet.rowCount; row++) {
+            const value = sheet.getCell(row, 0).value;
+            if (value == userEmail) {
+                const rawFavorites = sheet.getCell(row-1, 3).value || '';
+                let favorites;
+                if (rawFavorites.toString().length >= 1) {
+                    const newList = rawFavorites + "," + itemId;
+                    favorites = newList.split(',').sort((a, b) => a - b);
+                    sheet.getCell(row-1, 3).value = favorites.join(',');
+                } else {
+                    sheet.getCell(row-1, 3).value = itemId; 
+                }
+                await sheet.getCell(row-1, 3).save();
+                return;
+            }
+        }
+    } catch (error) {
+        console.error('Error updating favorites in Google Sheets:', error);
+    }
+}
+
 export async function getFavorites(itemId) {
     try {
         await doc.useServiceAccountAuth({
@@ -89,6 +122,8 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const itemId = req.body.itemId;
         const isFavorited = req.body.isFavorited;
+        const userEmail = req.body.userEmail;
+        await setFavoritedPost(itemId, userEmail);
         await handleFavorite(itemId, isFavorited);
         res.status(200).json({ message: 'Favorite/Unfavorite processed successfully' });
     } else if (req.method === 'GET') {

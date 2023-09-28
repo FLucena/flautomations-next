@@ -47,7 +47,7 @@ export async function setLikedPost(itemId, userEmail) {
         for (let row = 1; row < sheet.rowCount; row++) {
             const value = sheet.getCell(row, 0).value;
             if (value == userEmail) {
-                const rawLikes = sheet.getCell(row-1, 2).value|| '';
+                const rawLikes = sheet.getCell(row-1, 2).value || '';
                 let likes;
                 if (rawLikes.toString().length >= 1) {
                     const newList = rawLikes + "," + itemId;
