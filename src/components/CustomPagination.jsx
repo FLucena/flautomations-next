@@ -24,7 +24,7 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           key={page}
           onClick={() => handlePageChange(page)}
           variant={currentPage === page ? 'solid' : 'outline'}
-          fontSize={fontSize} // Apply responsive font size
+          fontSize={fontSize}
         >
           {page}
         </Button>
@@ -40,7 +40,7 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           onClick={() => handlePageChange(currentPage - 1)}
           leftIcon={'<'}
           variant="outline"
-          fontSize={fontSize} // Apply responsive font size
+          fontSize={fontSize}
         >
         </Button>
       )}
@@ -50,7 +50,7 @@ const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
           onClick={() => handlePageChange(currentPage + 1)}
           rightIcon={'>'}
           variant="outline"
-          fontSize={fontSize} // Apply responsive font size
+          fontSize={fontSize}
         >
         </Button>
       )}
