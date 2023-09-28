@@ -32,7 +32,7 @@ export async function handleFavorite(itemId, isFavorited) {
     }
 }
 
-export async function setFavoritedPost(itemId, userEmail) {
+export async function setFavoritedPost(itemId, userEmail, isFavorited) {
     try {
         await doc.useServiceAccountAuth({
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -49,15 +49,28 @@ export async function setFavoritedPost(itemId, userEmail) {
             if (value == userEmail) {
                 const rawFavorites = sheet.getCell(row-1, 3).value || '';
                 let favorites;
-                if (rawFavorites.toString().length >= 1) {
-                    const newList = rawFavorites + "," + itemId;
-                    favorites = newList.split(',').sort((a, b) => a - b);
-                    sheet.getCell(row-1, 3).value = favorites.join(',');
+                if (isFavorited) {
+                    if (rawFavorites.toString().length >= 1) {
+                        const newList = rawFavorites + "," + itemId;
+                        favorites = newList.split(',').sort((a, b) => a - b);
+                        sheet.getCell(row-1, 3).value = favorites.join(',');
+                    } else {
+                        sheet.getCell(row-1, 3).value = itemId; 
+                    }
+                    await sheet.getCell(row-1, 3).save();
+                    return;
                 } else {
-                    sheet.getCell(row-1, 3).value = itemId; 
+                    if (rawFavorites.toString().length >= 1) {
+                        const newList = rawFavorites;
+                        favorites = newList.split(',').sort((a, b) => a - b);
+                        const filteredFavorites = favorites.filter(element => element !== itemId);
+                        sheet.getCell(row-1, 3).value = filteredFavorites.join(',');
+                    } else {
+                        sheet.getCell(row-1, 3).value = ''; 
+                    }
+                    await sheet.getCell(row-1, 3).save();
+                    return;
                 }
-                await sheet.getCell(row-1, 3).save();
-                return;
             }
         }
     } catch (error) {
@@ -123,7 +136,7 @@ export default async function handler(req, res) {
         const itemId = req.body.itemId;
         const isFavorited = req.body.isFavorited;
         const userEmail = req.body.userEmail;
-        await setFavoritedPost(itemId, userEmail);
+        await setFavoritedPost(itemId, userEmail, isFavorited);
         await handleFavorite(itemId, isFavorited);
         res.status(200).json({ message: 'Favorite/Unfavorite processed successfully' });
     } else if (req.method === 'GET') {

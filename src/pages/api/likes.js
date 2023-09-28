@@ -32,7 +32,7 @@ export async function handleLike(itemId, isLiked) {
     }
 }
 
-export async function setLikedPost(itemId, userEmail) {
+export async function setLikedPost(itemId, userEmail, isLiked) {
     try {
         await doc.useServiceAccountAuth({
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -49,15 +49,29 @@ export async function setLikedPost(itemId, userEmail) {
             if (value == userEmail) {
                 const rawLikes = sheet.getCell(row-1, 2).value || '';
                 let likes;
-                if (rawLikes.toString().length >= 1) {
-                    const newList = rawLikes + "," + itemId;
-                    likes = newList.split(',').sort((a, b) => a - b);
-                    sheet.getCell(row-1, 2).value = likes.join(',');
+
+                if (isLiked) {
+                    if (rawLikes.toString().length >= 1) {
+                        const newList = rawLikes + "," + itemId;
+                        likes = newList.split(',').sort((a, b) => a - b);
+                        sheet.getCell(row-1, 2).value = likes.join(',');
+                    } else {
+                        sheet.getCell(row-1, 2).value = itemId; 
+                    }
+                    await sheet.getCell(row-1, 2).save();
+                    return;
                 } else {
-                    sheet.getCell(row-1, 2).value = itemId; 
+                    if (rawLikes.toString().length >= 1) {
+                        const newList = rawLikes;
+                        likes = newList.split(',').sort((a, b) => a - b);
+                        const filteredLikes = likes.filter(element => element !== itemId);
+                        sheet.getCell(row-1, 2).value = filteredLikes.join(',');
+                    } else {
+                        sheet.getCell(row-1, 2).value = ''; 
+                    }
+                    await sheet.getCell(row-1, 2).save();
+                    return;
                 }
-                await sheet.getCell(row-1, 2).save();
-                return;
             }
         }
     } catch (error) {
@@ -121,7 +135,7 @@ export default async function handler(req, res) {
         const itemId = req.body.itemId;
         const isLiked = req.body.isLiked;
         const userEmail = req.body.userEmail;
-        await setLikedPost(itemId, userEmail);
+        await setLikedPost(itemId, userEmail, isLiked);
         await handleLike(itemId, isLiked);
         res.status(200).json({ message: 'Like/Unlike processed successfully' });
     } else if (req.method === 'GET') {
