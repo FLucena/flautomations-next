@@ -40,8 +40,6 @@ export async function setFavoritedPost(itemId, userEmail, isFavorited) {
         });
         await doc.loadInfo();
         const sheet = doc.sheetsByIndex[5];
-
-        // Load all cells before looping through them
         await sheet.loadCells();
 
         for (let row = 1; row < sheet.rowCount; row++) {
@@ -60,10 +58,11 @@ export async function setFavoritedPost(itemId, userEmail, isFavorited) {
                     await sheet.getCell(row-1, 3).save();
                     return;
                 } else {
-                    if (rawFavorites.toString().length >= 1) {
+                    if (rawFavorites.toString().length > 1) {
                         const newList = rawFavorites;
                         favorites = newList.split(',').sort((a, b) => a - b);
-                        const filteredFavorites = favorites.filter(element => element !== itemId);
+                        const filteredFavorites = favorites.filter(element => Number(element) !== Number(itemId));
+                        console.log(filteredFavorites, itemId)
                         sheet.getCell(row-1, 3).value = filteredFavorites.join(',');
                     } else {
                         sheet.getCell(row-1, 3).value = ''; 

@@ -40,8 +40,6 @@ export async function setLikedPost(itemId, userEmail, isLiked) {
         });
         await doc.loadInfo();
         const sheet = doc.sheetsByIndex[5];
-
-        // Load all cells before looping through them
         await sheet.loadCells();
 
         for (let row = 1; row < sheet.rowCount; row++) {
@@ -61,10 +59,10 @@ export async function setLikedPost(itemId, userEmail, isLiked) {
                     await sheet.getCell(row-1, 2).save();
                     return;
                 } else {
-                    if (rawLikes.toString().length >= 1) {
+                    if (rawLikes.toString().length > 1) {
                         const newList = rawLikes;
                         likes = newList.split(',').sort((a, b) => a - b);
-                        const filteredLikes = likes.filter(element => element !== itemId);
+                        const filteredLikes = likes.filter(element => Number(element) !== Number(itemId));
                         sheet.getCell(row-1, 2).value = filteredLikes.join(',');
                     } else {
                         sheet.getCell(row-1, 2).value = ''; 
@@ -87,8 +85,6 @@ export async function getLikes(itemId) {
         });
         await doc.loadInfo();
         const sheet = doc.sheetsByIndex[3];
-
-        // Load all cells before looping through them
         await sheet.loadCells();
 
         for (let row = 1; row < sheet.rowCount; row++) {
