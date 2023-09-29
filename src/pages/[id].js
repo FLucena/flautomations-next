@@ -34,7 +34,7 @@ const PostPage = ({ rowData, id }) => {
     <>
       <Navbar lang={defaultLang} />
       {loading ? (
-        <Flex align="center" justify="center">
+        <Flex align="center" justify="center" height="500px">
           <BallTriangle
             height={100}
             width={100}
