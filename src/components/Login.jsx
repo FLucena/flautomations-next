@@ -51,7 +51,6 @@ const Span = styled.span`
   right: 0;
   padding-right: 1rem;
   margin-top: 2rem;
-
 `;
 
 const SVG = styled.svg`

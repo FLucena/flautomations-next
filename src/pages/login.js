@@ -1,14 +1,18 @@
+import React, { Suspense, lazy } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Login from "../components/Login";
+
+const Login = lazy(() => import("../components/Login"));
 
 const LoginPage = () => {
   const defaultLang = "es";
   return (
     <>
-      <Navbar lang={defaultLang}/>
-        <Login lang={defaultLang}/>
-      <Footer lang={defaultLang}/>
+      <Navbar lang={defaultLang} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Login lang={defaultLang} />
+      </Suspense>
+      <Footer lang={defaultLang} />
     </>
   );
 };
