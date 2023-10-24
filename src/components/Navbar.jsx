@@ -119,7 +119,7 @@ export default function Navbar({ lang }) {
                   padding={6}
                   leftIcon={<AddIcon />}
                   as={Link}
-                  href="/register"
+                  href="/login"
                 >
                   {content.navbar.buttonText}
                 </Button>

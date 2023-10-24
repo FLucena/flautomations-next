@@ -130,7 +130,7 @@ const Login = ({ lang }) => {
       <Form>
         <Stack mt={5} w={215}>
           <FormTitle mb={20}>{content.login.headingText}</FormTitle>
-          <Button isLoading={false} onClick={() => signIn('google')} display="flex" maxW={55} ml={20} >
+          <Button isLoading={false} onClick={() => signIn('google')} display="flex" maxW={55} ml={20} marginTop="15px">
             <Image src="/google-logo.png" height={20} width={20} alt={'Google Logo'}/>
             <Spacer px={1} />
             <Box bg="blue.500" color="white" p={3} borderRadius="md" w={52}>
