@@ -8,8 +8,9 @@ import { getData } from './api/posts/getData';
 import * as contentEn from '../components/content-en';
 import * as contentEs from '../components/content-es';
 import { Button, Flex } from '@chakra-ui/react';
+import UnderConstruction from "src/components/UnderConstruction";
 
-const SearchPage = ({ favoritesData, postsData }) => {
+const FavoritesPage = ({ favoritesData, postsData }) => {
   const defaultLang = 'es';
   const content = defaultLang === 'en' ? contentEn : contentEs;
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,46 +32,54 @@ const SearchPage = ({ favoritesData, postsData }) => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-
   return (
     <>
       <Navbar lang={defaultLang} />
       <div style={{ margin: '10px' }}>
-        <ul
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '20px',
-            marginTop: '3rem'
-          }}
-        >
-          {currentItems.map((rowValues) => (
-            <li key={rowValues[13]} style={{ margin: '10px' }}>
-              <Card
-                title={decodeURIComponent("")}
-                description={decodeURIComponent("")}
-                imageUrl={decodeURIComponent("")}
-                id={""}
-              />
-            </li>
-          ))}
-        </ul>
+        {!session ? (
+          <div>You have to be logged in to see your favorites.</div>
+        ) : (
+          <>
+            <UnderConstruction />
+            {/* 
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '20px',
+                marginTop: '3rem'
+              }}
+            >
+              {currentItems.map((rowValue, index) => (
+                <li key={index} style={{ margin: '10px' }}>
+                  <Card
+                    title={decodeURIComponent("")}
+                    description={decodeURIComponent("")}
+                    imageUrl={decodeURIComponent("")}
+                    id={""}
+                  />
+                </li>
+              ))}
+            </ul>
 
-        <Flex align="center" justify="center" mt={4}>
-          {currentPage > 1 && (
-            <Button onClick={handlePreviousPage} leftIcon="<" variant="outline">
-              {content.pagination.previousPage}
-            </Button>
-          )}
-          {currentPage < totalPages && (
-            <Button onClick={handleNextPage} rightIcon=">" variant="outline">
-              {content.pagination.nextPage}
-            </Button>
-          )}
-        </Flex>
+            <Flex align="center" justify="center" mt={4}>
+              {currentPage > 1 && (
+                <Button onClick={handlePreviousPage} leftIcon="<" variant="outline">
+                  {content.pagination.previousPage}
+                </Button>
+              )}
+              {currentPage < totalPages && (
+                <Button onClick={handleNextPage} rightIcon=">" variant="outline">
+                  {content.pagination.nextPage}
+                </Button>
+              )}
+            </Flex>
+            */}
+          </>
+        )}
       </div>
       <Footer lang={defaultLang} />
     </>
@@ -89,4 +98,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default SearchPage;
+export default FavoritesPage;
