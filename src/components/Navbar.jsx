@@ -66,7 +66,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[18, 30, 40]} w={[150, 280, 400]}>
+            <Box fontSize={[12, 20, 40]} w={[40, 200, 400]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
@@ -79,24 +79,25 @@ export default function Navbar({ lang }) {
               ))}
             </HStack>
           </HStack>
+          <Flex marginRight={5}>
+            <a href='https://cafecito.app/flautomations' rel='noopener' target='_blank'>
+              <Image
+                src='/button_6.png'
+                alt='Invitame un café en cafecito.app'
+                width={180}
+                height={60}
+                minWidth={30}
+                srcSet={[
+                  '/imgs/buttons/button_6.png 1x',
+                  '/imgs/buttons/button_6_2x.png 2x',
+                  '/imgs/buttons/button_6_3.75x.png 3.75x',
+                ]}
+              />
+            </a>
+          </Flex>
           <Flex alignItems="center">
             {session ? (
               <>
-                <Flex marginRight={5}>
-                  <a href='https://cafecito.app/flautomations' rel='noopener' target='_blank'>
-                    <Image
-                      src='/button_6.png'
-                      alt='Invitame un café en cafecito.app'
-                      width={120}
-                      height={40}
-                      srcSet={[
-                        '/imgs/buttons/button_6.png 1x',
-                        '/imgs/buttons/button_6_2x.png 2x',
-                        '/imgs/buttons/button_6_3.75x.png 3.75x',
-                      ]}
-                    />
-                  </a>
-                </Flex>
                 <Menu>
                 <MenuButton
                   as={Button}
@@ -128,11 +129,10 @@ export default function Navbar({ lang }) {
                   variant="solid"
                   colorScheme="teal"
                   size="xs"
-                  fontSize={[12, 14, 18]}
+                  fontSize={[10, 12, 16]}
                   w={[20, 100, 120]}
-                  h={10}
                   mr={4}
-                  padding={6}
+                  padding={4}
                   leftIcon={<AddIcon />}
                   as={Link}
                   href="/login"
