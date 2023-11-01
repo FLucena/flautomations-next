@@ -23,25 +23,28 @@ const ListHeader = ({ children }) => {
 
 const SocialButton = ({ children, label, href }) => {
   return (
-    <chakra.button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-      rounded={'full'}
-      w={8}
-      h={8}
-      cursor={'pointer'}
-      as={'a'}
+    <a
       href={href}
-      display={'inline-flex'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      transition={'background 0.3s ease'}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: useColorModeValue('blackAlpha.100', 'whiteAlpha.100'),
+        borderRadius: '50%',
+        width: 40,
+        height: 40,
+        cursor: 'pointer',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'background 0.3s ease',
+      }}
       _hover={{
-        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+        background: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
       }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
-    </chakra.button>
+    </a>
   );
 };
 
@@ -65,16 +68,16 @@ export default function Footer({ lang }) {
           </Stack>
           <Stack align={['flex-start', 'center']} mx={['0', 'auto']}>
             <ListHeader>{content.legalContent.header}</ListHeader>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./cookies'}>
             {content.legalContent.cookiesPolicy}
             </Box>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./privacy'}>
             {content.legalContent.privacyPolicy}
             </Box>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./terms'}>
             {content.legalContent.termsOfService}
             </Box>
-            <Box as="a" href={'#'}>
+            <Box as="a" href={'./compliance'}>
             {content.legalContent.lawEnforcement}
             </Box>
           </Stack>
