@@ -1,4 +1,5 @@
 'use strict';
+import Image from 'next/image';
 import { useSession, signIn, signOut } from "next-auth/react";
 import React from 'react';
 import Link from 'next/link';
@@ -81,6 +82,21 @@ export default function Navbar({ lang }) {
           <Flex alignItems="center">
             {session ? (
               <>
+                <Flex marginRight={5}>
+                  <a href='https://cafecito.app/flautomations' rel='noopener' target='_blank'>
+                    <Image
+                      src='/button_6.png'
+                      alt='Invitame un café en cafecito.app'
+                      width={120}
+                      height={40}
+                      srcSet={[
+                        '/imgs/buttons/button_6.png 1x',
+                        '/imgs/buttons/button_6_2x.png 2x',
+                        '/imgs/buttons/button_6_3.75x.png 3.75x',
+                      ]}
+                    />
+                  </a>
+                </Flex>
                 <Menu>
                 <MenuButton
                   as={Button}

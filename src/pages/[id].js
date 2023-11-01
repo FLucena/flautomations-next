@@ -57,8 +57,7 @@ const PostPage = ({ rowData, id }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  let rowData;
-
+  let rowData = [];
   try {
     rowData = await fetchPostData(parseInt(params.id) + 1);
     if (rowData === undefined) {
