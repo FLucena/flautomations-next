@@ -66,7 +66,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[12, 20, 40]} w={[40, 200, 400]}>
+            <Box fontSize={[10, 20, 40]} w={[59, 200, 400]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
@@ -136,6 +136,7 @@ export default function Navbar({ lang }) {
                   leftIcon={<AddIcon />}
                   as={Link}
                   href="/login"
+                  display={{ base: "none", md: "inline-flex" }}
                 >
                   {content.navbar.buttonText}
                 </Button>
