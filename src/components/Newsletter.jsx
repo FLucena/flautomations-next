@@ -1,5 +1,5 @@
 'use client'
-
+import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -108,16 +108,18 @@ export default function Newsletter({ lang }) {
               outline: 'none',
             }}
           />
-          <Button
-            bg={'blue.400'}
-            rounded={'full'}
-            color={'white'}
-            flex={'1 0 auto'}
-            onClick={handleSubmit}
-            _hover={{ bg: 'blue.500' }}
-            _focus={{ bg: 'blue.500' }}>
-            {content.newsletter.buttonText}
-          </Button>
+          <motion.div whileHover={{ scale: 1.1 }}>
+            <Button
+              bg={'#47B3E7'}
+              rounded={'full'}
+              color={'white'}
+              flex={'1 0 auto'}
+              onClick={handleSubmit}
+              _hover={{ bg: 'blue.500' }}
+              _focus={{ bg: 'blue.500' }}>
+              {content.newsletter.buttonText}
+            </Button>
+          </motion.div>
         </Stack>
       </Stack>
     </Flex>

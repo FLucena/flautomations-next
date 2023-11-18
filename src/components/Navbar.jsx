@@ -28,11 +28,6 @@ const Links = [''];
 const NavLink = (props) => {
   const { children } = props;
 
-  const hoverStyle = {
-    textDecoration: 'none',
-    bg: useColorModeValue('gray.200', 'gray.700'),
-  };
-
   return (
     <Box
       as="a"
@@ -92,8 +87,8 @@ export default function Navbar({ lang }) {
                 <Image
                   src='/button_6.png'
                   alt='Invitame un café en cafecito.app'
-                  width={180}
-                  height={60}
+                  width={210}
+                  height={120}
                   minWidth={30}
                   srcSet={[
                     '/imgs/buttons/button_6.png 1x',
@@ -137,10 +132,12 @@ export default function Navbar({ lang }) {
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <Button
                     variant="solid"
-                    colorScheme="teal"
+                    colorScheme="#47B3E7"
+                    bg={'#47B3E7'}
                     size="xs"
                     fontSize={[10, 12, 16]}
                     w={[20, 100, 100]}
+                    h={[5,5,5]}
                     mr={4}
                     padding={4}
                     leftIcon={<AddIcon />}
