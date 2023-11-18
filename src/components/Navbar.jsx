@@ -1,4 +1,5 @@
 'use strict';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from "next-auth/react";
 import React from 'react';
@@ -26,6 +27,12 @@ const Links = [''];
 
 const NavLink = (props) => {
   const { children } = props;
+
+  const hoverStyle = {
+    textDecoration: 'none',
+    bg: useColorModeValue('gray.200', 'gray.700'),
+  };
+
   return (
     <Box
       as="a"
@@ -66,7 +73,7 @@ export default function Navbar({ lang }) {
             justifyContent="flex-start"
             w="full"
           >
-            <Box fontSize={[10, 20, 40]} w={[59, 200, 400]}>
+            <Box fontSize={[10, 20, 40]} w={[59, 200, 300]}>
               <Link href="/">FL Automations</Link>
             </Box>
             <HStack
@@ -81,18 +88,20 @@ export default function Navbar({ lang }) {
           </HStack>
           <Flex marginRight={5}>
             <a href='https://cafecito.app/flautomations' rel='noopener' target='_blank'>
-              <Image
-                src='/button_6.png'
-                alt='Invitame un café en cafecito.app'
-                width={180}
-                height={60}
-                minWidth={30}
-                srcSet={[
-                  '/imgs/buttons/button_6.png 1x',
-                  '/imgs/buttons/button_6_2x.png 2x',
-                  '/imgs/buttons/button_6_3.75x.png 3.75x',
-                ]}
-              />
+              <motion.div whileHover={{ scale: 1.1 }}>
+                <Image
+                  src='/button_6.png'
+                  alt='Invitame un café en cafecito.app'
+                  width={180}
+                  height={60}
+                  minWidth={30}
+                  srcSet={[
+                    '/imgs/buttons/button_6.png 1x',
+                    '/imgs/buttons/button_6_2x.png 2x',
+                    '/imgs/buttons/button_6_3.75x.png 3.75x',
+                  ]}
+                />
+              </motion.div>
             </a>
           </Flex>
           <Flex alignItems="center">
@@ -125,21 +134,23 @@ export default function Navbar({ lang }) {
               </>
             ) : (
               <Flex flexDirection="row">
-                <Button
-                  variant="solid"
-                  colorScheme="teal"
-                  size="xs"
-                  fontSize={[10, 12, 16]}
-                  w={[20, 100, 120]}
-                  mr={4}
-                  padding={4}
-                  leftIcon={<AddIcon />}
-                  as={Link}
-                  href="/login"
-                  display={{ base: "none", md: "inline-flex" }}
-                >
-                  {content.navbar.buttonText}
-                </Button>
+                <motion.div whileHover={{ scale: 1.1 }}>
+                  <Button
+                    variant="solid"
+                    colorScheme="teal"
+                    size="xs"
+                    fontSize={[10, 12, 16]}
+                    w={[20, 100, 100]}
+                    mr={4}
+                    padding={4}
+                    leftIcon={<AddIcon />}
+                    as={Link}
+                    href="/login"
+                    display={{ base: "none", md: "inline-flex" }}
+                  >
+                    {content.navbar.buttonText}
+                  </Button>
+                </motion.div>
               <Menu>
                 <MenuButton
                   as={Button}
