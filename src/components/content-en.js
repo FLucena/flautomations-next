@@ -65,3 +65,9 @@ export const companyContent = {
     previousPage: "Previous",
     nextPage: "Next"
   }
+
+  export const aboutUs = {
+    heading: "About Us",
+    text1: "Welcome to FL Automations! We are a passionate team dedicated to providing solutions for startups, small to medium-sized businesses, and even tools for your everyday life. Our mission is to offer automations and conveniences for your daily routine.",
+    text2: "Get to know us and explore the amazing content we have prepared for you."
+  }  

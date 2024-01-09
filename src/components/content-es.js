@@ -65,3 +65,9 @@ export const pagination = {
   previousPage: "Anterior",
   nextPage: "Siguiente"
 }
+
+export const aboutUs = {
+  heading: "Sobre Nosotros",
+  text1: "¡Bienvenido a FL Automations! Somos un equipo apasionado dedicado a proporcionar soluciones para emprendimientos,pequeñas a medianas empresas, e incluso herramientas para tu vida cotidiana. Nuestra misión es brindar automatizaciones y facilidades para tu día a día.",
+  text2: "Conócenos y explora el increíble contenido que hemos preparado para ti."
+}

@@ -1,10 +1,8 @@
 import { Button, Flex, useBreakpointValue } from '@chakra-ui/react';
 import * as React from 'react';
-import * as contentEn from './content-en';
-import * as contentEs from './content-es';
 
 const CustomPagination = ({ currentPage, totalPages, onPageChange, lang }) => {
-  const content = lang === 'en' ? contentEn : contentEs;
+
   const fontSize = useBreakpointValue({ base: 'xs', md: 'md', lg: 'lg' });
 
   const handlePageChange = (newPage) => {

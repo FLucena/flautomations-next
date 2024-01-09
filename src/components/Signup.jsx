@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import {
   Flex,
   Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  HStack,
-  InputRightElement,
   Stack,
   Spacer,
   Button,
@@ -15,16 +9,11 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import * as contentEn from './content-en';
 import * as contentEs from './content-es';
 import styled from 'styled-components';
-
-
-
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from "next/image";
-import axios from 'axios';
 
 const A = styled.a`
   text-decoration: underline;
