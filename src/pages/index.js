@@ -10,10 +10,8 @@ export default function Home() {
   return (
     <>
         <Announcement />
-        <Navbar lang={defaultLang}/>
         <Slider lang={defaultLang}/>
         <Newsletter lang={defaultLang}/>
-        <Footer lang={defaultLang}/>
     </>
   )
 }

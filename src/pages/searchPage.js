@@ -53,7 +53,6 @@ const SearchPage = ({ initialData }) => {
 
   return (
     <>
-      <Navbar lang={defaultLang} />
       <div style={{ margin: '10px' }}>
         <Search onInputChange={handleSearchInputChange} />
         <ul
@@ -92,7 +91,6 @@ const SearchPage = ({ initialData }) => {
           )}
         </Flex>
       </div>
-      <Footer lang={defaultLang} />
     </>
   );
 };

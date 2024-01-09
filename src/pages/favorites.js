@@ -34,7 +34,6 @@ const FavoritesPage = ({ favoritesData, postsData }) => {
 
   return (
     <>
-      <Navbar lang={defaultLang} />
       <div style={{ margin: '10px' }}>
         {!session ? (
           <div>You have to be logged in to see your favorites.</div>
@@ -81,7 +80,6 @@ const FavoritesPage = ({ favoritesData, postsData }) => {
           </>
         )}
       </div>
-      <Footer lang={defaultLang} />
     </>
   );
 };

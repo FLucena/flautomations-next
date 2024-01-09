@@ -1,6 +1,4 @@
 import Post from '../components/Post';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { fetchPostData } from '../utils/fetchPostData';
 import { useState, useEffect } from 'react';
 import { BallTriangle } from 'react-loader-spinner';
@@ -32,7 +30,6 @@ const PostPage = ({ rowData, id }) => {
 
   return (
     <>
-      <Navbar lang={defaultLang} />
       {loading ? (
         <Flex align="center" justify="center" height="500px">
           <BallTriangle
@@ -51,7 +48,6 @@ const PostPage = ({ rowData, id }) => {
           <Post {...rowData} id={id} imageSRC={rowData[3]} pageCount={1000} lang={defaultLang} />
         )
       )}
-      <Footer lang={defaultLang} />
     </>
   );
 };
