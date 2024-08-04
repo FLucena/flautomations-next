@@ -63,6 +63,12 @@ export async function getServerSideProps({ params }) {
     console.error('Error fetching data:', error);
   }
 
+  // Ensure rowData is properly serialized
+  rowData = rowData || null;
+  if (rowData && typeof rowData === 'object') {
+    rowData = JSON.parse(JSON.stringify(rowData, (key, value) => (value === undefined ? null : value)));
+  }
+
   return {
     props: {
       rowData,
